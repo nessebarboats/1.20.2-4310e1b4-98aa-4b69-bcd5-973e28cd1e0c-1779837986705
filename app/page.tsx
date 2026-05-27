@@ -18,6 +18,7 @@ import { LandingFeatureList } from '@/components/landing/feature/LandingFeatureL
 import { LandingFaqCollapsibleSection } from '@/components/landing/LandingFaqCollapsible';
 import { LandingSocialProofBand } from '@/components/landing/social-proof/LandingSocialProofBand';
 import { LandingSocialProofBandItem } from '@/components/landing/social-proof/LandingSocialProofBandItem';
+import { Button } from '@/components/shared/ui/button';
 
 import {
   ChromeIcon,
@@ -70,6 +71,16 @@ export default function Home() {
         textPosition="center"
       />
 
+      <LandingPrimaryImageCtaSection
+  title="Landing page in minutes"
+  description="Get 10x more done with Shadcn UI, React & Next.js, and say goodbye to repetitive tasks. You'll never go back."
+  imageSrc="/static/images/shipixen/product/1.webp"
+  imageAlt="Sample image"
+>
+  <Button size="xl" asChild>
+    <a href="#">Buy now</a>
+  </Button>
+</LandingPrimaryImageCtaSection>
       
       <LandingPrimaryImageCtaSection
         title="nessebarboats"

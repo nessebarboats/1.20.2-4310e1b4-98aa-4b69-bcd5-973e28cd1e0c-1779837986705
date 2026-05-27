@@ -71,6 +71,15 @@ export default function Home() {
         textPosition="center"
       />
 
+
+<LandingPrimaryImageCtaSection
+  imageSrc="/static/images/shipixen/product/1.webp"
+  imageAlt="Sample image"
+  imagePosition="center"
+  withBackground=true
+>
+</LandingPrimaryImageCtaSection>;
+      
       <LandingPrimaryImageCtaSection
   title="Landing page in minutes"
   description="Get 10x more done with Shadcn UI, React & Next.js, and say goodbye to repetitive tasks. You'll never go back."

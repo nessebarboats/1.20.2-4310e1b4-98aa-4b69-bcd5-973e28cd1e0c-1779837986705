@@ -81,6 +81,21 @@ export default function Home() {
     <a href="#">Buy now</a>
   </Button>
 </LandingPrimaryImageCtaSection>
+
+<div className="-mx-2 flex flex-wrap overflow-hidden xl:-mx-2">
+  <div className="my-1 w-full overflow-hidden px-2 xl:my-1 xl:w-1/2 xl:px-2">
+    ![Image one](https://picsum.photos/800/400?random=1)
+  </div>
+  <div className="my-1 w-full overflow-hidden px-2 xl:my-1 xl:w-1/2 xl:px-2">
+    ![Image two](https://picsum.photos/800/400?random=2)
+  </div>
+  <div className="my-1 w-full overflow-hidden px-2 xl:my-1 xl:w-1/2 xl:px-2">
+    ![Image three](https://picsum.photos/800/400?random=3)
+  </div>
+  <div className="my-1 w-full overflow-hidden px-2 xl:my-1 xl:w-1/2 xl:px-2">
+    ![Image four](https://picsum.photos/800/400?random=4)
+  </div>
+</div>
       
       <LandingPrimaryImageCtaSection
         title="nessebarboats"

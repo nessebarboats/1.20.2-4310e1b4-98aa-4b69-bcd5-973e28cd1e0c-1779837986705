@@ -51,6 +51,26 @@ export default function Home() {
 
       <Header className="mb-0 lg:mb-0" />
 
+      <LandingProductFeature
+        title="Explore the Coast"
+        descriptionComponent={
+          <>
+            Experience Nessebar like never before with our premium boat
+            services.
+            <Button asChild variant="outlinePrimary">
+              <Link href="/read-more">Read more</Link>
+            </Button>
+          </>
+        }
+        withBackground
+        variant="secondary"
+        imageSrc="/static/images/product-sample.webp"
+        imageAlt="Screenshot of the product"
+        imagePosition="center"
+        textPosition="center"
+      />
+
+      
       <LandingPrimaryImageCtaSection
         title="nessebarboats"
         description="nessebarboats"
@@ -233,24 +253,6 @@ export default function Home() {
         }
       />
 
-      <LandingProductFeature
-        title="Explore the Coast"
-        descriptionComponent={
-          <>
-            Experience Nessebar like never before with our premium boat
-            services.
-            <Button asChild variant="outlinePrimary">
-              <Link href="/read-more">Read more</Link>
-            </Button>
-          </>
-        }
-        withBackground
-        variant="secondary"
-        imageSrc="/static/images/product-sample.webp"
-        imageAlt="Screenshot of the product"
-        imagePosition="center"
-        textPosition="center"
-      />
 
       <LandingSaleCtaSection
         title="Book Your Adventure Today"

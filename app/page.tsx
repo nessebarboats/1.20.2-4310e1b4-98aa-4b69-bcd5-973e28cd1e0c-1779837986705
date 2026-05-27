@@ -19,6 +19,9 @@ import { LandingFaqCollapsibleSection } from '@/components/landing/LandingFaqCol
 import { LandingSocialProofBand } from '@/components/landing/social-proof/LandingSocialProofBand';
 import { LandingSocialProofBandItem } from '@/components/landing/social-proof/LandingSocialProofBandItem';
 
+import Image from "next/image"
+
+import { AspectRatio } from "@/components/shared/ui/aspect-ratio"
 
 import {
   ChromeIcon,
@@ -32,6 +35,24 @@ import {
   ThumbsUpIcon,
   ZapIcon,
 } from 'lucide-react';
+
+
+
+
+
+export default function AspectRatioDemo() {
+  return (
+    <AspectRatio ratio={16 / 9} className="bg-muted">
+      <Image
+        src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+        alt="Photo by Drew Beamer"
+        fill
+        className="h-full w-full rounded-md object-cover"
+      />
+    </AspectRatio>
+  )
+}
+
 
 export default function Home() {
   return (
@@ -72,13 +93,8 @@ export default function Home() {
       />
 
 
-<LandingPrimaryImageCtaSection
-  imageSrc="/static/images/shipixen/product/1.webp"
-  imageAlt="Sample image"
-  imagePosition="center"
-  withBackground=true
->
-</LandingPrimaryImageCtaSection>;
+
+
       
       <LandingPrimaryImageCtaSection
   title="Landing page in minutes"

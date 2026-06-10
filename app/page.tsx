@@ -108,7 +108,7 @@ export default function Home() {
             </p>
           </>
         }
-        imageSrc="/static/images/backdrop-19.webp"
+        imageSrc="/static/images/ab1.jpg"
         imageAlt="Screenshot of the product"
         imagePosition="left"
         imagePerspective="none"

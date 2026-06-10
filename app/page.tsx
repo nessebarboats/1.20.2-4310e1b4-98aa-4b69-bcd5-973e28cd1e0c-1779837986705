@@ -75,6 +75,47 @@ export default function Home() {
         className="h-full w-full rounded-md object-cover"
       />
     </AspectRatio>
+
+
+<LandingProductFeature
+        title="Customized Boat Tours"
+        descriptionComponent={
+          <>
+            <LandingProductFeatureKeyPoints
+              keyPoints={[
+                {
+                  title: 'Intuitive Interface',
+                  description:
+                    'Design and customize your app easily with our simple drag-and-drop interface.',
+                },
+                {
+                  title: 'Seamless Integration',
+                  description:
+                    'Connect your app with other tools effortlessly for a smoother workflow.',
+                },
+                {
+                  title: 'Smart Analytics',
+                  description:
+                    'Gain valuable insights into user behavior and trends with our advanced analytics tools.',
+                },
+              ]}
+            />
+
+            <Button asChild>
+              <Link href="/signup">Get Started</Link>
+            </Button>
+
+            <p className="text-sm">
+              7 day free trial, no credit card required.
+            </p>
+          </>
+        }
+        imageSrc="/static/images/backdrop-19.webp"
+        imageAlt="Screenshot of the product"
+        imagePosition="left"
+        imagePerspective="none"
+      />
+      
       <LandingProductFeature
         title="Explore the Coast"
         descriptionComponent={

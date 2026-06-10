@@ -18,8 +18,8 @@ import { LandingFeatureList } from '@/components/landing/feature/LandingFeatureL
 import { LandingFaqCollapsibleSection } from '@/components/landing/LandingFaqCollapsible';
 import { LandingSocialProofBand } from '@/components/landing/social-proof/LandingSocialProofBand';
 import { LandingSocialProofBandItem } from '@/components/landing/social-proof/LandingSocialProofBandItem';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { byPrefixAndName } from '@awesome.me/kit-KIT_CODE/icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { byPrefixAndName } from '@awesome.me/kit-KIT_CODE/icons';
 import Image from "next/image"
 
 

@@ -55,11 +55,11 @@ export default function Home() {
         </LandingSocialProofBandItem>
 
         <LandingSocialProofBandItem>
-          Easy to use, easy to love
+          needhelp@company.com
         </LandingSocialProofBandItem>
 
         <LandingSocialProofBandItem graphic="rating">
-          99% customer satisfaction
+          Mon to Sat: 8.00 am - 7.00 pm
         </LandingSocialProofBandItem>
       </LandingSocialProofBand>
 

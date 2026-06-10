@@ -51,7 +51,7 @@ export default function Home() {
 
         
         <LandingSocialProofBandItem>
-          Fast, reliable, and secure
+          1901 Thornridge Shiloh, Hawaii 81063
         </LandingSocialProofBandItem>
 
         <LandingSocialProofBandItem>

@@ -18,7 +18,7 @@ import { LandingFeatureList } from '@/components/landing/feature/LandingFeatureL
 import { LandingFaqCollapsibleSection } from '@/components/landing/LandingFaqCollapsible';
 import { LandingSocialProofBand } from '@/components/landing/social-proof/LandingSocialProofBand';
 import { LandingSocialProofBandItem } from '@/components/landing/social-proof/LandingSocialProofBandItem';
-
+import { FaBeer } from 'react-icons/fa';
 import Image from "next/image"
 
 import { AspectRatio } from "@/components/shared/ui/aspect-ratio"

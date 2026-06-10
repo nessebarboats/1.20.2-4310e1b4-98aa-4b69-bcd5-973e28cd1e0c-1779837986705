@@ -50,7 +50,7 @@ export default function Home() {
 
 
         
-        <LandingSocialProofBandItem>
+        <LandingSocialProofBandItem style="content: "\f3c5"">
           1901 Thornridge Shiloh, Hawaii 81063
         </LandingSocialProofBandItem>
 

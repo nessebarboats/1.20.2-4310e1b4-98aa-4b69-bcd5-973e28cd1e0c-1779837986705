@@ -77,48 +77,8 @@ export default function Home() {
       />
     </AspectRatio>
 
-
-<LandingProductFeature
-        title="Customized Boat Tours"
-        descriptionComponent={
-          <>
-            <LandingProductFeatureKeyPoints
-              keyPoints={[
-                {
-                  title: 'Intuitive Interface',
-                  description:
-                    'Design and customize your app easily with our simple drag-and-drop interface.',
-                },
-                {
-                  title: 'Seamless Integration',
-                  description:
-                    'Connect your app with other tools effortlessly for a smoother workflow.',
-                },
-                {
-                  title: 'Smart Analytics',
-                  description:
-                    'Gain valuable insights into user behavior and trends with our advanced analytics tools.',
-                },
-              ]}
-            />
-
-            <Button asChild>
-              <Link href="/signup">Get Started</Link>
-            </Button>
-
-            <p className="text-sm">
-              7 day free trial, no credit card required.
-            </p>
-          </>
-        }
-        imageSrc="/static/images/ab1.jpg"
-        imageAlt="Screenshot of the product"
-        imagePosition="left"
-        imagePerspective="none"
-      />
-
- <LandingTestimonialReadMoreWrapper size="md">
- <LandingFeatureList
+<LandingTestimonialReadMoreWrapper size="md">
+<LandingFeatureList
         title="Awesome Features Await!"
         description="Unforgettable Sea Journeys"
         featureItems={[
@@ -133,13 +93,13 @@ export default function Home() {
             title: 'Seamless Integration',
             description:
               'Connect your app with other tools effortlessly for a smoother workflow.',
-            icon: <LineChartIcon />,
+            icon: <LightbulbIcon />,
           },
           {
             title: 'Smart Analytics',
             description:
               'Gain valuable insights into user behavior and trends with our advanced analytics tools.',
-            icon: <SparklesIcon />,
+            icon: <ZapIcon />,
           },
           {
             title: 'Rock-Solid Security',
@@ -180,6 +140,46 @@ export default function Home() {
         ]}
       />
  </LandingTestimonialReadMoreWrapper>
+<LandingProductFeature
+        title="Customized Boat Tours"
+        descriptionComponent={
+          <>
+            <LandingProductFeatureKeyPoints
+              keyPoints={[
+                {
+                  title: 'Intuitive Interface',
+                  description:
+                    'Design and customize your app easily with our simple drag-and-drop interface.',
+                },
+                {
+                  title: 'Seamless Integration',
+                  description:
+                    'Connect your app with other tools effortlessly for a smoother workflow.',
+                },
+                {
+                  title: 'Smart Analytics',
+                  description:
+                    'Gain valuable insights into user behavior and trends with our advanced analytics tools.',
+                },
+              ]}
+            />
+
+            <Button asChild>
+              <Link href="/signup">Get Started</Link>
+            </Button>
+
+            <p className="text-sm">
+              7 day free trial, no credit card required.
+            </p>
+          </>
+        }
+        imageSrc="/static/images/ab1.jpg"
+        imageAlt="Screenshot of the product"
+        imagePosition="left"
+        imagePerspective="none"
+      />
+
+ 
       
       <LandingProductFeature
         title="Explore the Coast"

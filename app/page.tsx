@@ -67,7 +67,6 @@ export default function Home() {
       <Header className="mb-0 lg:mb-0" />
      
 
-    </Header>
       
    <AspectRatio ratio={16 / 9} className="bg-muted">
       <Image

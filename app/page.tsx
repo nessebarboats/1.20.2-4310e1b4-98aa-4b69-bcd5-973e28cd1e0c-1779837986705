@@ -116,6 +116,69 @@ export default function Home() {
         imagePosition="left"
         imagePerspective="none"
       />
+
+ <LandingTestimonialReadMoreWrapper size="md">
+ <LandingFeatureList
+        title="Awesome Features Await!"
+        description="Explore the fantastic features of our AI app:"
+        featureItems={[
+          {
+            title: 'Intuitive Interface',
+            description:
+              'Design and customize your app easily with our simple drag-and-drop interface.',
+            icon: <LayersIcon />,
+          },
+          {
+            title: 'Seamless Integration',
+            description:
+              'Connect your app with other tools effortlessly for a smoother workflow.',
+            icon: <LineChartIcon />,
+          },
+          {
+            title: 'Smart Analytics',
+            description:
+              'Gain valuable insights into user behavior and trends with our advanced analytics tools.',
+            icon: <SparklesIcon />,
+          },
+          {
+            title: 'Rock-Solid Security',
+            description:
+              'Rest assured, your data is safe with our top-notch security measures.',
+            icon: <LightbulbIcon />,
+          },
+          {
+            title: 'Automatic Updates',
+            description:
+              'Never miss out on the latest features - our app updates itself automatically!',
+            icon: <ZapIcon />,
+          },
+          {
+            title: 'Scalability on Demand',
+            description:
+              'Grow your app along with your business needs, effortlessly expanding to meet demand.',
+            icon: <ThumbsUpIcon />,
+          },
+          {
+            title: 'Intelligent Assistance',
+            description:
+              'Receive personalized recommendations and insights tailored to your workflow, helping you make informed decisions and work more efficiently.',
+            icon: <ChromeIcon />,
+          },
+          {
+            title: 'Seamless Collaboration',
+            description:
+              'Easily collaborate with team members and clients in real-time, fostering productivity and enhancing communication across projects.',
+            icon: <FigmaIcon />,
+          },
+          {
+            title: 'Advanced Customization',
+            description:
+              'Tailor your app to fit your unique requirements with extensive customization options, ensuring it aligns perfectly with your business objectives.',
+            icon: <FramerIcon />,
+          },
+        ]}
+      />
+ </LandingTestimonialReadMoreWrapper>
       
       <LandingProductFeature
         title="Explore the Coast"

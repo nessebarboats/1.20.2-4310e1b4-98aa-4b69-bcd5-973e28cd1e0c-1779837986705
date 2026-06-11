@@ -65,7 +65,8 @@ export default function Home() {
       </LandingSocialProofBand>
 
       <Header className="mb-0 lg:mb-0" />
-      <LandingPrimaryImageCtaSection
+     
+      <LandingPrimaryImageCtaSection>
    <AspectRatio ratio={16 / 9} className="bg-muted">
       <Image
         src="/static/images/slide2.jpg"

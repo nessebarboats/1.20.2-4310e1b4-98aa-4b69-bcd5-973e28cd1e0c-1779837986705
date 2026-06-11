@@ -18,6 +18,8 @@ import { LandingFeatureList } from '@/components/landing/feature/LandingFeatureL
 import { LandingFaqCollapsibleSection } from '@/components/landing/LandingFaqCollapsible';
 import { LandingSocialProofBand } from '@/components/landing/social-proof/LandingSocialProofBand';
 import { LandingSocialProofBandItem } from '@/components/landing/social-proof/LandingSocialProofBandItem';
+import { LandingProductVideoFeature } from '@/components/landing/LandingProductVideoFeature';
+
 import Image from "next/image"
 
 

@@ -74,7 +74,7 @@ export default function Home() {
         className="h-full w-full rounded-md object-cover"
       />
     </AspectRatio>
-    </LandingPrimaryImageCtaSection>
+   </LandingPrimaryImageCtaSection>
 
 <LandingProductFeature
         title="Customized Boat Tours"

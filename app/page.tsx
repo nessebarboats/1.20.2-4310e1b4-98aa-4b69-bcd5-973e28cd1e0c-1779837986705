@@ -108,6 +108,9 @@ export default function Home() {
 
   <LandingProductVideoFeature
     title="Easy Setup"
+    videoPosition="center"
+  withBackground
+  variant="primary"
     description="Get started in minutes with our guided setup process."
     videoSrc="https://www.youtube.com/watch?v=hddwAIXbKZo"
     videoPoster="/static/images/div1.jpg"

@@ -105,8 +105,8 @@ export default function Home() {
         ]}
       />
 
-
-  <LandingProductVideoFeature ratio={16 / 9} className="bg-muted"
+ <AspectRatio ratio={16 / 9} className="bg-muted">
+  <LandingProductVideoFeature
     title="Easy Setup"
     videoPosition="center"
   withBackground
@@ -115,7 +115,7 @@ export default function Home() {
     videoSrc="https://www.youtube.com/watch?v=hddwAIXbKZo"
     videoPoster="/static/images/div1.jpg"
   />
-      
+  </AspectRatio>      
 <LandingProductFeature
         title="Customized Boat Tours"
         descriptionComponent={

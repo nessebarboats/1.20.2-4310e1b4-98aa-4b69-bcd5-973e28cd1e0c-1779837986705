@@ -20,7 +20,7 @@ export const Header = ({ className }: { className?: string }) => {
         <Link href="/" aria-label={siteConfig.logoTitle}>
           <div className="flex items-center gap-3 justify-between">
             <Image
-              src="/static/images/logo.jpeg"
+              src="/static/images/logo-wide-white.png"
               alt="nessebarboats logo"
               height={43}
               width={43}

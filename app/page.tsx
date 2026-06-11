@@ -112,7 +112,7 @@ export default function Home() {
   withBackground
   variant="primary"
     description="Get started in minutes with our guided setup process."
-    videoSrc="https://www.youtube.com/watch?v=hddwAIXbKZo"
+    videoSrc="https://www.youtube.com/watch?v=hddwAIXbKZo width='100%'"
     videoPoster="/static/images/div1.jpg"
   />
   </AspectRatio>      

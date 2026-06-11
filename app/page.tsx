@@ -83,7 +83,7 @@ export default function Home() {
         description="Unforgettable Sea Journeys"
         featureItems={[
           {
-             icon: <LayersIcon />,
+             icon: <SparklesIcon />,
             title: 'Intuitive Interface',
             description:
               'Design and customize your app easily with our simple drag-and-drop interface.',
@@ -100,42 +100,6 @@ export default function Home() {
             description:
               'Gain valuable insights into user behavior and trends with our advanced analytics tools.',
             icon: <ZapIcon />,
-          },
-          {
-            title: 'Rock-Solid Security',
-            description:
-              'Rest assured, your data is safe with our top-notch security measures.',
-            icon: <LightbulbIcon />,
-          },
-          {
-            title: 'Automatic Updates',
-            description:
-              'Never miss out on the latest features - our app updates itself automatically!',
-            icon: <ZapIcon />,
-          },
-          {
-            title: 'Scalability on Demand',
-            description:
-              'Grow your app along with your business needs, effortlessly expanding to meet demand.',
-            icon: <ThumbsUpIcon />,
-          },
-          {
-            title: 'Intelligent Assistance',
-            description:
-              'Receive personalized recommendations and insights tailored to your workflow, helping you make informed decisions and work more efficiently.',
-            icon: <ChromeIcon />,
-          },
-          {
-            title: 'Seamless Collaboration',
-            description:
-              'Easily collaborate with team members and clients in real-time, fostering productivity and enhancing communication across projects.',
-            icon: <FigmaIcon />,
-          },
-          {
-            title: 'Advanced Customization',
-            description:
-              'Tailor your app to fit your unique requirements with extensive customization options, ensuring it aligns perfectly with your business objectives.',
-            icon: <FramerIcon />,
           },
         ]}
       />

@@ -22,8 +22,8 @@ export const Header = ({ className }: { className?: string }) => {
             <Image
               src="/static/images/logo-wide-white.png"
               alt="nessebarboats logo"
-              height={43}
-              width={43}
+              height={143}
+              width={143}
               className="group-hover:animate-wiggle "
             />
 

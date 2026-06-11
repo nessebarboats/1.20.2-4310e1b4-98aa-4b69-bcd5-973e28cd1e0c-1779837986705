@@ -120,13 +120,14 @@ export default function Home() {
  <LandingTestimonialReadMoreWrapper size="md">
  <LandingFeatureList
         title="Awesome Features Await!"
-        description="Explore the fantastic features of our AI app:"
+        description="Unforgettable Sea Journeys"
         featureItems={[
           {
+             icon: <LayersIcon />,
             title: 'Intuitive Interface',
             description:
               'Design and customize your app easily with our simple drag-and-drop interface.',
-            icon: <LayersIcon />,
+           
           },
           {
             title: 'Seamless Integration',

@@ -33,7 +33,7 @@ export const Header = ({ className }: { className?: string }) => {
           </div>
         </Link>
       </div>
-      <div className="flex items-center leading-5 gap-4 sm:gap-6">
+      <div className="flex items-center leading-5 gap-4 sm:gap-6">sssss
         {headerNavLinks.map((link) => (
           <ActiveLink
             key={link.title}

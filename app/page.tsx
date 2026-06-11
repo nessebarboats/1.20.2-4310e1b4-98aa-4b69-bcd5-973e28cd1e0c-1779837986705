@@ -77,7 +77,6 @@ export default function Home() {
       />
     </AspectRatio>
 
-<LandingTestimonialReadMoreWrapper size="md">
 <LandingFeatureList
         title="Awesome Features Await!"
         description="Unforgettable Sea Journeys"
@@ -103,7 +102,15 @@ export default function Home() {
           },
         ]}
       />
- </LandingTestimonialReadMoreWrapper>
+
+
+  <LandingProductVideoFeature
+    title="Easy Setup"
+    description="Get started in minutes with our guided setup process."
+    videoSrc="https://www.youtube.com/watch?v=hddwAIXbKZo"
+    videoPoster="/static/images/div1.jpg"
+  />
+      
 <LandingProductFeature
         title="Customized Boat Tours"
         descriptionComponent={

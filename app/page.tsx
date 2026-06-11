@@ -70,7 +70,7 @@ export default function Home() {
      
 
       
-   <AspectRatio ratio={16 / 9} className="bg-muted">
+   <AspectRatio ratio={16 / 9} >
       <Image
         src="/static/images/slide2.jpg"
         alt="Photo by Drew Beamer"
@@ -105,7 +105,7 @@ export default function Home() {
         ]}
       />
     </AspectRatio>
- <AspectRatio ratio={16 / 9} className="bg-muted">
+ <AspectRatio ratio={16 / 9} >
   <LandingProductVideoFeature
     title="Easy Setup"
     videoPosition="center"

@@ -106,7 +106,7 @@ export default function Home() {
       />
 
 
-  <LandingProductVideoFeature
+  <LandingProductVideoFeature ratio={16 / 9} className="bg-muted"
     title="Easy Setup"
     videoPosition="center"
   withBackground

@@ -65,6 +65,7 @@ export default function Home() {
       </LandingSocialProofBand>
 
       <Header className="mb-0 lg:mb-0" />
+      <LandingPrimaryImageCtaSection
    <AspectRatio ratio={16 / 9} className="bg-muted">
       <Image
         src="/static/images/slide2.jpg"
@@ -73,7 +74,7 @@ export default function Home() {
         className="h-full w-full rounded-md object-cover"
       />
     </AspectRatio>
-
+    </LandingPrimaryImageCtaSection>
 
 <LandingProductFeature
         title="Customized Boat Tours"

@@ -78,7 +78,7 @@ export default function Home() {
         className="h-full w-full rounded-md object-cover"
       />
     </AspectRatio>
-   <AspectRatio ratio={16 / 9} className="bg-muted">
+   <AspectRatio ratio={16 / 9} >
 <LandingFeatureList
         title="Awesome Features Await!"
         description="Unforgettable Sea Journeys"

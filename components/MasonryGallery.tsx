@@ -9,7 +9,7 @@ export default function MasonryGallery() {
   ];
 
   return (
-    <section className="py-24">
+    <section className="w-full">
       <div className="container mx-auto max-w-7xl">
         <h2 className="mb-12 text-center text-4xl font-bold">
           Our Gallery

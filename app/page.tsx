@@ -104,19 +104,7 @@ export default function Home() {
           },
         ]}
       />
-
-  <LandingProductVideoFeature
-    title="Easy Setup"
-    videoPosition="center"
-      withBackgroundGlow
-  backgroundGlowVariant="primary"
-  autoPlay={false}
-  controls={false}
-    description="Get started in minutes with our guided setup process."
-    videoSrc="https://www.youtube.com/watch?v=hddwAIXbKZo"
-    videoPoster="/static/images/div1.jpg"
-  />
-
+<section className="py-24">
 <a
   href="https://www.youtube.com/watch?v=hddwAIXbKZo"
   target="_blank"
@@ -130,14 +118,12 @@ export default function Home() {
   />
 
   <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-    <div className="rounded-full bg-white/50 p-6"> 
-    
-<Play size={62} />
-    
+    <div className="rounded-full bg-white/50 p-6">     
+      <Play size={62} />    
     </div>
   </div>
 </a>
-
+</section>
 <LandingProductFeature
         title="Customized Boat Tours"
         descriptionComponent={

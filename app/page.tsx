@@ -78,7 +78,6 @@ export default function Home() {
         className="h-full w-full rounded-md object-cover"
       />
     </AspectRatio>
-   <AspectRatio ratio={16 / 9} >
 <LandingFeatureList
         title="Awesome Features Await!"
         description="Unforgettable Sea Journeys"
@@ -104,7 +103,6 @@ export default function Home() {
           },
         ]}
       />
-    </AspectRatio>
 
   <LandingProductVideoFeature
     title="Easy Setup"

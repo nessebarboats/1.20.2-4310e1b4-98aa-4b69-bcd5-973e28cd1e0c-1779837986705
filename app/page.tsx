@@ -134,7 +134,7 @@ export default function Home() {
 </a>
 </section>
       <section
-  className="py-24 bg-cover bg-center"
+  className="py-24 bg-no-repeat bg-right"
   style={{
     backgroundImage: "url('/static/images/shape.png')",
   }}

@@ -179,7 +179,6 @@ export default function Home() {
     title="Free"
     description="For small teams & personal use."
     price="$0"
-    href=false
      state="check"
   >
     <p>Up to 5 users</p>

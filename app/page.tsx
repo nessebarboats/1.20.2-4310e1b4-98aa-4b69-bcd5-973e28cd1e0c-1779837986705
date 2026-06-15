@@ -105,7 +105,7 @@ export default function Home() {
         ]}
       />
     </AspectRatio>
- <AspectRatio ratio={16 / 9} >
+
   <LandingProductVideoFeature
     title="Easy Setup"
     videoPosition="center"
@@ -117,7 +117,7 @@ export default function Home() {
     videoSrc="https://www.youtube.com/watch?v=hddwAIXbKZo width='100%'"
     videoPoster="/static/images/div1.jpg"
   />
-  </AspectRatio>      
+  
 <LandingProductFeature
         title="Customized Boat Tours"
         descriptionComponent={

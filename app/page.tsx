@@ -230,28 +230,24 @@ export default function Home() {
 >
 <Image
   src="/static/images/gallery8-1100x1100.jpg"
-  alt={`Gallery ${index + 1}`}
   width={1100}
   height={1100}
   className="w-full rounded-2xl"
 />
         <Image
   src="/static/images/gallery2-1-672x448.jpg"
-  alt={`Gallery ${index + 1}`}
   width={672}
   height={448}
   className="w-full rounded-2xl"
 />
                 <Image
   src="/static/images/gallery3-1-672x448.jpg"
-  alt={`Gallery ${index + 1}`}
   width={672}
   height={448}
   className="w-full rounded-2xl"
 />
                 <Image
   src="/static/images/gallery4-1-672x448.jpg"
-  alt={`Gallery ${index + 1}`}
   width={336}
   height={448}
   className="w-full rounded-2xl"

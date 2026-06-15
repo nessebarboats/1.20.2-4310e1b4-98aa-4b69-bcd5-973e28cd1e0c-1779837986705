@@ -112,17 +112,36 @@ export default function Home() {
   autoPlay={false}
   controls={false}
     description="Get started in minutes with our guided setup process."
-    videoSrc="https://www.youtube.com/watch?v=hddwAIXbKZo width='100%'"
+    videoSrc="https://www.youtube.com/watch?v=hddwAIXbKZo"
     videoPoster="/static/images/div1.jpg"
   />
 
+<a
+  href="https://www.youtube.com/watch?v=VIDEO_ID"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="relative block w-full aspect-video overflow-hidden rounded-xl"
+>
+  <img
+    src="/images/video-cover.jpg"
+    alt="Watch video"
+    className="w-full h-full object-cover"
+  />
+
+  <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+    <div className="rounded-full bg-white/90 p-4">
+      ▶
+    </div>
+  </div>
+</a>
+      
 
       <video
   className="w-full"
   controls
   playsInline
 >
-  <source src="/videos/demo.mp4" type="video/mp4" />
+  <source src="https://www.youtube.com/watch?v=hddwAIXbKZo" type="video/mp4" />
 </video>
   
 <LandingProductFeature

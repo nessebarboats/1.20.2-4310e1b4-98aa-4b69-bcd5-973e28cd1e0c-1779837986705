@@ -171,6 +171,10 @@ export default function Home() {
         imageAlt="Screenshot of the product"
         imagePosition="left"
         imagePerspective="none"
+   className="bg-cover bg-center"
+  style={{
+    backgroundImage: "url('/images/background.jpg')",
+  }}
       />
 
 

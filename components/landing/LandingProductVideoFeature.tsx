@@ -74,7 +74,7 @@ export const LandingProductVideoFeature = ({
     : defaultVideoPosition;
 
   return (
-    <section style="width=100% !important"
+    <section
       className={clsx(
         'relative w-full flex flex-col justify-center items-center gap-8 py-12 lg:py-16',
         withBackground && variant === 'primary'

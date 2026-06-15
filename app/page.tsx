@@ -117,13 +117,13 @@ export default function Home() {
   />
 
 <a
-  href="https://www.youtube.com/watch?v=VIDEO_ID"
+  href="https://www.youtube.com/watch?v=hddwAIXbKZo"
   target="_blank"
   rel="noopener noreferrer"
   className="relative block w-full aspect-video overflow-hidden rounded-xl"
 >
   <img
-    src="/images/video-cover.jpg"
+    src="/static/images/div1.jpg"
     alt="Watch video"
     className="w-full h-full object-cover"
   />
@@ -134,16 +134,7 @@ export default function Home() {
     </div>
   </div>
 </a>
-      
 
-      <video
-  className="w-full"
-  controls
-  playsInline
->
-  <source src="https://www.youtube.com/watch?v=hddwAIXbKZo" type="video/mp4" />
-</video>
-  
 <LandingProductFeature
         title="Customized Boat Tours"
         descriptionComponent={

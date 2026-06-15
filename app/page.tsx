@@ -109,7 +109,6 @@ export default function Home() {
     videoPosition="center"
       withBackgroundGlow
   backgroundGlowVariant="primary"
-  title="Easy Branding"
   autoPlay={false}
   controls={false}
     description="Get started in minutes with our guided setup process."

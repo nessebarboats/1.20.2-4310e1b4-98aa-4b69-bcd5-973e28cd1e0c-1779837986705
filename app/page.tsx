@@ -224,7 +224,7 @@ export default function Home() {
       
 
 <section
-  className="py-24 bg-no-repeat bg-right bg-bottom"
+  className="w-full"
 >
   <MasonryGallery />
 

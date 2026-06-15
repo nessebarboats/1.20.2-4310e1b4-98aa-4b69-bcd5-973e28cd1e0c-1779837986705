@@ -188,7 +188,6 @@ export default function Home() {
   <LandingPricingPlan
     title="Pro"
     description="For larger teams or businesses."
-    ctaText="Upgrade"
     price="$20"
     priceSuffix="/mo"
     highlighted
@@ -201,7 +200,6 @@ export default function Home() {
   <LandingPricingPlan
     title="Enterprise"
     description="For enterprise teams & businesses."
-    ctaText="Sign up"
     price="$100"
     priceSuffix="/mo"
     featured

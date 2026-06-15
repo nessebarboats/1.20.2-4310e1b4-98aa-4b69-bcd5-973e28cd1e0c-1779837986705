@@ -130,14 +130,10 @@ export default function Home() {
   />
 
   <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-    <div className="rounded-full bg-white/90 p-4"> 
-      ▶
-<Play size={32} />
-      <img
-  src="/icons/my-icon.svg"
-  alt="My Icon"
-  className="w-6 h-6"
-/>
+    <div className="rounded-full bg-white/50 p-6"> 
+    
+<Play size={62} />
+    
     </div>
   </div>
 </a>

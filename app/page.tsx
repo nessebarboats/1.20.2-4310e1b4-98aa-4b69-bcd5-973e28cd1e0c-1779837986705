@@ -44,6 +44,9 @@ import {
   Smartphone,
   MapPin,
   Mail,
+  Anchor,
+  Ship,
+  ShipWheel
 } from 'lucide-react';
 
 
@@ -90,7 +93,7 @@ export default function Home() {
         description="Unforgettable Sea Journeys"
         featureItems={[
           {
-             icon: <Mail />,
+             icon: <Anchor />,
             title: 'Intuitive Interface',
             description:
               'Design and customize your app easily with our simple drag-and-drop interface.',
@@ -100,13 +103,13 @@ export default function Home() {
             title: 'Seamless Integration',
             description:
               'Connect your app with other tools effortlessly for a smoother workflow.',
-            icon: <LightbulbIcon />,
+            icon: <Ship />,
           },
           {
             title: 'Smart Analytics',
             description:
               'Gain valuable insights into user behavior and trends with our advanced analytics tools.',
-            icon: <ZapIcon />,
+            icon: <ShipWheel />,
           },
         ]}
       />

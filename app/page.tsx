@@ -107,10 +107,11 @@ export default function Home() {
   <LandingProductVideoFeature
     title="Easy Setup"
     videoPosition="center"
-    backgroundGlowVariant="secondary"
-    className = "h-full w-full"
-  withBackground
-  variant="primary"
+      withBackgroundGlow
+  backgroundGlowVariant="primary"
+  title="Easy Branding"
+  autoPlay={false}
+  controls={false}
     description="Get started in minutes with our guided setup process."
     videoSrc="https://www.youtube.com/watch?v=hddwAIXbKZo width='100%'"
     videoPoster="/static/images/div1.jpg"

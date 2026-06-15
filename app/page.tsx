@@ -38,6 +38,9 @@ import {
   ThumbsUpIcon,
   ZapIcon,
   Play,
+  Smartphone,
+  MapPin,
+  Mail,
 } from 'lucide-react';
 
 
@@ -109,7 +112,7 @@ export default function Home() {
   href="https://www.youtube.com/watch?v=hddwAIXbKZo"
   target="_blank"
   rel="noopener noreferrer"
-  className="relative block aspect-video overflow-hidden rounded-xl"
+  className="relative block overflow-hidden rounded-xl"
 >
   <img
     src="/static/images/div1.jpg"

@@ -37,6 +37,7 @@ import {
   SparklesIcon,
   ThumbsUpIcon,
   ZapIcon,
+  Play,
 } from 'lucide-react';
 
 
@@ -125,12 +126,18 @@ export default function Home() {
   <img
     src="/static/images/div1.jpg"
     alt="Watch video"
-    className="w-full h-full object-cover"
+    className="w-full object-cover"
   />
 
   <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-    <div className="rounded-full bg-white/90 p-4"> <i className="fa fa-play"></i>
+    <div className="rounded-full bg-white/90 p-4"> 
       ▶
+
+      <img
+  src="/icons/my-icon.svg"
+  alt="My Icon"
+  className="w-6 h-6"
+/>
     </div>
   </div>
 </a>

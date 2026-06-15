@@ -1,11 +1,11 @@
 export default function MasonryGallery() {
   const images = [
-    "/gallery/1.jpg",
-    "/gallery/2.jpg",
-    "/gallery/3.jpg",
-    "/gallery/4.jpg",
-    "/gallery/5.jpg",
-    "/gallery/6.jpg",
+    "/static/images/gallery8-1100x1100.jpg",
+    "/static/images/gallery2-1-672x448.jpg",
+    "/static/images/gallery3-1-672x448.jpg",
+    "/static/images/gallery4-1-672x448.jpg",
+    "/static/images/gallery8-1100x1100.jpg",
+    "/static/images/gallery3-1-672x448.jpg",
   ];
 
   return (

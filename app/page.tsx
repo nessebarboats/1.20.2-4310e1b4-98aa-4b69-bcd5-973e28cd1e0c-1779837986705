@@ -22,6 +22,7 @@ import { LandingProductVideoFeature } from '@/components/landing/LandingProductV
 
 import { LandingPricingSection } from '@/components/landing/pricing/LandingPricingSection';
 import { LandingPricingPlan } from '@/components/landing/pricing/LandingPricingPlan';
+import MasonryGallery from "@/components/MasonryGallery";
 
 import Image from "next/image"
 
@@ -228,30 +229,8 @@ export default function Home() {
     backgroundImage: "url('/static/images/shape.png')",
   }}
 >
-<Image
-  src="/static/images/gallery8-1100x1100.jpg"
-  width={1100}
-  height={1100}
-  className="w-full rounded-2xl"
-/>
-        <Image
-  src="/static/images/gallery2-1-672x448.jpg"
-  width={672}
-  height={448}
-  className="w-full rounded-2xl"
-/>
-                <Image
-  src="/static/images/gallery3-1-672x448.jpg"
-  width={672}
-  height={448}
-  className="w-full rounded-2xl"
-/>
-                <Image
-  src="/static/images/gallery4-1-672x448.jpg"
-  width={336}
-  height={448}
-  className="w-full rounded-2xl"
-/>
+  <MasonryGallery />
+
 </section>
       
       <LandingProductFeature

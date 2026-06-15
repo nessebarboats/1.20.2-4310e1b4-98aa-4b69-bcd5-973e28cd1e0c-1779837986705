@@ -107,8 +107,7 @@ export default function Home() {
   <LandingProductVideoFeature
     title="Easy Setup"
     videoPosition="center"
-    backgroundGlowVariant="primary"
-    videoMaxWidth ="100%"
+    backgroundGlowVariant="secondary"
     className = "h-full w-full"
   withBackground
   variant="primary"

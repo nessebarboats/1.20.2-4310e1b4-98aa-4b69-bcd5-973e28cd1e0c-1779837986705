@@ -129,7 +129,7 @@ export default function Home() {
   />
 
   <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-    <div className="rounded-full bg-white/90 p-4"> <i class="fa fa-play"></i>
+    <div className="rounded-full bg-white/90 p-4"> <i className="fa fa-play"></i>
       ▶
     </div>
   </div>

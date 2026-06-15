@@ -109,6 +109,8 @@ export default function Home() {
   <LandingProductVideoFeature
     title="Easy Setup"
     videoPosition="center"
+    backgroundGlowVariant="primary"
+    videoMaxWidth ="100%"
   withBackground
   variant="primary"
     description="Get started in minutes with our guided setup process."

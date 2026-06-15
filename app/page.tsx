@@ -133,7 +133,12 @@ export default function Home() {
   </div>
 </a>
 </section>
-      
+      <section
+  className="py-24 bg-cover bg-center"
+  style={{
+    backgroundImage: "url('/static/images/shape.png')",
+  }}
+>
 <LandingProductFeature
         title="Customized Boat Tours"
         descriptionComponent={
@@ -171,12 +176,9 @@ export default function Home() {
         imageAlt="Screenshot of the product"
         imagePosition="left"
         imagePerspective="none"
-   className="bg-cover bg-center"
-  style={{
-    backgroundImage: "url('/images/background.jpg')",
-  }}
+ 
       />
-
+</section>
 
 <LandingPricingSection
   title="Simple, scalable pricing"

@@ -90,7 +90,7 @@ export default function Home() {
         description="Unforgettable Sea Journeys"
         featureItems={[
           {
-             icon: <SparklesIcon />,
+             icon: <Mail />,
             title: 'Intuitive Interface',
             description:
               'Design and customize your app easily with our simple drag-and-drop interface.',

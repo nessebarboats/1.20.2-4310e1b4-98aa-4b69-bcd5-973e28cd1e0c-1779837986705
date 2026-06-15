@@ -7,7 +7,7 @@ export const VideoPlayer = ({
   autoPlay = true,
   controls = true,
   muted = true,
-  maxWidth = '100%',
+  maxWidth = '700px',
   poster,
   src,
   width,

@@ -108,6 +108,7 @@ export default function Home() {
     title="Easy Setup"
     videoPosition="center"
       withBackgroundGlow
+    maxWidth="1500px"
   backgroundGlowVariant="primary"
   autoPlay={false}
   controls={false}

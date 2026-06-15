@@ -109,6 +109,7 @@ export default function Home() {
     videoPosition="center"
     backgroundGlowVariant="primary"
     videoMaxWidth ="100%"
+    className = "h-full w-full"
   withBackground
   variant="primary"
     description="Get started in minutes with our guided setup process."

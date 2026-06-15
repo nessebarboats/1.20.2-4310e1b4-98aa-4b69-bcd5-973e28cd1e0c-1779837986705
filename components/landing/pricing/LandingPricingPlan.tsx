@@ -141,7 +141,7 @@ export const LandingPricingPlan = ({
           ) : null}
         </p>
 
-        <Button
+        <!--Button
           size="lg"
           disabled={soldOut}
           className={clsx(
@@ -156,7 +156,7 @@ export const LandingPricingPlan = ({
           <Link href={href} onClick={onClick} className={'flex mt-6 shadow-sm'}>
             {soldOut ? 'Sold out' : ctaText}
           </Link>
-        </Button>
+        </Button-->
 
         {Array.isArray(children) ? (
           <ul

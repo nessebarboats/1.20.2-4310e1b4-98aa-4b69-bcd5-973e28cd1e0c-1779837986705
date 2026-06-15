@@ -223,11 +223,8 @@ export default function Home() {
 </LandingPricingSection>
       
 
-      <section
+<section
   className="py-24 bg-no-repeat bg-right bg-bottom"
-  style={{
-    backgroundImage: "url('/static/images/shape.png')",
-  }}
 >
   <MasonryGallery />
 

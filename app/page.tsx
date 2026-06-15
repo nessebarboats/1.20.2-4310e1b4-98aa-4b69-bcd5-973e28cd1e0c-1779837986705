@@ -139,9 +139,7 @@ export default function Home() {
     backgroundImage: "url('/static/images/shape.png')",
   }}
 >
-        <span className="bg-[url('https://dev265.kodesolution.com/yachtly/wp-content/uploads/2026/05/yacht.png')] bg-no-repeat bg-left bg-contain px-4 py-2">
-  Featured Text
-</span>
+
         
 <LandingProductFeature
         title="Customized Boat Tours"

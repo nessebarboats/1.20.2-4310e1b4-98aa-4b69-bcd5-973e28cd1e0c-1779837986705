@@ -115,6 +115,15 @@ export default function Home() {
     videoSrc="https://www.youtube.com/watch?v=hddwAIXbKZo width='100%'"
     videoPoster="/static/images/div1.jpg"
   />
+
+
+      <video
+  className="w-full"
+  controls
+  playsInline
+>
+  <source src="/videos/demo.mp4" type="video/mp4" />
+</video>
   
 <LandingProductFeature
         title="Customized Boat Tours"

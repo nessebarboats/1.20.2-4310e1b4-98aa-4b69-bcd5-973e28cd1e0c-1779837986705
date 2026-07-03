@@ -23,7 +23,7 @@ import { LandingProductVideoFeature } from '@/components/landing/LandingProductV
 import { LandingPricingSection } from '@/components/landing/pricing/LandingPricingSection';
 import { LandingPricingPlan } from '@/components/landing/pricing/LandingPricingPlan';
 import MasonryGallery from "@/components/MasonryGallery";
-
+import { supabaseAdmin } from "@/lib/supabase/server";
 import Image from "next/image"
 
 
@@ -52,6 +52,12 @@ import {
 
 
 
+const { data, error } = await supabaseAdmin
+    .from("stormglass_forecasts")
+    .select("*")
+    .limit(5);
+
+console.log(data);
 
 
 

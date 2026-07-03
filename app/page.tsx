@@ -49,17 +49,6 @@ import {
 } from 'lucide-react';
 
 
-
-const { data, error } = await supabaseAdmin
-    .from("stormglass_forecasts")
-    .select("*")
-    .limit(5);
-
-console.log(data);
-
-
-
-
 export default function Home() {
   return (
     <div className="flex flex-col w-full items-center fancy-overlay">

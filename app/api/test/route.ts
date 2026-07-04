@@ -4,7 +4,7 @@ export async function GET() {
   const { data, error } = await supabase
     .from("test")
     .select("*")
-    .limit(1);
+    .limit(3);
 
   return Response.json({
     data,

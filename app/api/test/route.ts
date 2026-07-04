@@ -2,8 +2,8 @@ import { supabase } from "@/lib/supabase";
 
 export async function GET() {
   const { data, error } = await supabase
-    .from("test")
-    .select("id, created_at, name")
+    .from("test8")
+    .select("id, created_at")
     .order("created_at", { ascending: false });
 
   if (error) {

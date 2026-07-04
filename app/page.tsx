@@ -48,20 +48,7 @@ import {
   ShipWheel
 } from 'lucide-react';
 
-import { supabase } from "@/lib/supabase";
 
-export async function GET() {
-  const { data, error } = await supabase
-    .from("test")
-    .select("*")
-    .limit(1);
-
-  return Response.json({
-    connected: !error,
-    error,
-    data,
-  });
-}
 export default function Home() {
   return (
     <div className="flex flex-col w-full items-center fancy-overlay">

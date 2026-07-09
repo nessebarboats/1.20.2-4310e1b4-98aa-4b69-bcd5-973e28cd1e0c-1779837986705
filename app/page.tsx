@@ -72,7 +72,7 @@ async function seed() {
 }
 
  return <button onClick={seed}>Insert User</button>;
-  return <button onClick={addUser}>Insert User</button>;
+//  return <button onClick={addUser}>Insert User</button>;
   
   return (
     <div className="flex flex-col w-full items-center fancy-overlay">

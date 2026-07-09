@@ -65,7 +65,13 @@ export default function Home() {
 
     console.log(data, error);
   }
+async function seed() {
+  await supabase.from("test").upsert([
+    { id: 1, ntitle: "Example" },
+  ]);
+}
 
+  <button onClick={seed}>Insert User</button>
   return <button onClick={addUser}>Insert User</button>;
   
   return (

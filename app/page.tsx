@@ -59,8 +59,7 @@ export default function Home() {
       .from("users")
       .insert([
         {
-          name: "John",
-          email: "john@test.com",
+          name: "Name5555",
         },
       ]);
 

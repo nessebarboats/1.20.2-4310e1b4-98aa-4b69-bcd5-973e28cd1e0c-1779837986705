@@ -52,6 +52,22 @@ import {
 
 
 export default function Home() {
+
+   async function addUser() {
+    const { data, error } = await supabase
+      .from("users")
+      .insert([
+        {
+          name: "John",
+          email: "john@test.com",
+        },
+      ]);
+
+    console.log(data, error);
+  }
+
+  return <button onClick={addUser}>Insert User</button>;
+  
   return (
     <div className="flex flex-col w-full items-center fancy-overlay">
        
@@ -135,20 +151,7 @@ export default function Home() {
     backgroundImage: "url('/static/images/shape.png')",
   }}
 >
- async function addUser() {
-    const { data, error } = await supabase
-      .from("users")
-      .insert([
-        {
-          name: "John",
-          email: "john@test.com",
-        },
-      ]);
 
-    console.log(data, error);
-  }
-
-  return <button onClick={addUser}>Insert User</button>;
         
 <LandingProductFeature
         title="Customized Boat Tours"

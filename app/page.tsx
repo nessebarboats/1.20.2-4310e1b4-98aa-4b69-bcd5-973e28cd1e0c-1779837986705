@@ -67,11 +67,11 @@ export default function Home() {
   }
 async function seed() {
   await supabase.from("test").upsert([
-    { id: 1, ntitle: "Example" },
+    { id: 1, name: "Example" },
   ]);
 }
 
-  <button onClick={seed}>Insert User</button>
+ return <button onClick={seed}>Insert User</button>;
   return <button onClick={addUser}>Insert User</button>;
   
   return (

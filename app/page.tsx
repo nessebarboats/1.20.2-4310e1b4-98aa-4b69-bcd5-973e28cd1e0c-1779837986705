@@ -101,7 +101,7 @@ async function seed() {
 
 
 
- useEffect(() => {
+ useEffect(() =&gt; {
     async function loadData() {
       const { data, error } = await supabase
         .from("test")

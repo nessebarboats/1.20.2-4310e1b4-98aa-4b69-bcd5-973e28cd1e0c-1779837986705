@@ -27,6 +27,7 @@ import MasonryGallery from "@/components/MasonryGallery";
 import Image from "next/image"
 
 import { AspectRatio } from "@/components/shared/ui/aspect-ratio"
+import { supabase } from "@/lib/supabase";
 
 import {
   ChromeIcon,
@@ -133,7 +134,20 @@ export default function Home() {
     backgroundImage: "url('/static/images/shape.png')",
   }}
 >
+ async function addUser() {
+    const { data, error } = await supabase
+      .from("users")
+      .insert([
+        {
+          name: "John",
+          email: "john@test.com",
+        },
+      ]);
 
+    console.log(data, error);
+  }
+
+  return <button onClick={addUser}>Insert User</button>;
         
 <LandingProductFeature
         title="Customized Boat Tours"

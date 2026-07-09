@@ -1,3 +1,4 @@
+"use client";
 import { Button } from '@/components/shared/ui/button';
 import Link from 'next/link';
 import Header from '@/components/shared/Header';
@@ -23,7 +24,7 @@ import { LandingProductVideoFeature } from '@/components/landing/LandingProductV
 import { LandingPricingSection } from '@/components/landing/pricing/LandingPricingSection';
 import { LandingPricingPlan } from '@/components/landing/pricing/LandingPricingPlan';
 import MasonryGallery from "@/components/MasonryGallery";
-"use client";
+
 import { supabase } from "@/lib/supabase";
 import Image from "next/image"
 

@@ -20,6 +20,7 @@ import { LandingFaqCollapsibleSection } from '@/components/landing/LandingFaqCol
 import { LandingSocialProofBand } from '@/components/landing/social-proof/LandingSocialProofBand';
 import { LandingSocialProofBandItem } from '@/components/landing/social-proof/LandingSocialProofBandItem';
 import { LandingProductVideoFeature } from '@/components/landing/LandingProductVideoFeature';
+import { useEffect, useState } from "react";
 
 import { LandingPricingSection } from '@/components/landing/pricing/LandingPricingSection';
 import { LandingPricingPlan } from '@/components/landing/pricing/LandingPricingPlan';
@@ -53,7 +54,7 @@ import {
 
 
 export default function Home() {
-
+ const [rows, setRows] = useState<any[]>([]);
    async function addUser() {
     const { data, error } = await supabase
       .from("test")
@@ -70,15 +71,7 @@ async function seed() {
     { id: 1, name: "Example" },
   ]);
 }
-async function getUser() {
- const { data, error } = await supabase
-    .from("test")
-    .select("*");
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-}
 
   
   return (
@@ -105,17 +98,34 @@ async function getUser() {
       </LandingSocialProofBand>
 
       <Header className="mb-0 lg:mb-0" />
-     getUser();
-    <main className="p-8">
-      <h1>Supabase Data</h1>
 
-      {data?.map((row) => (
-        <div key={row.id}>
-          <p>{row.ntitle}</p>
-          <small>{row.created_at}</small>
-        </div>
+
+
+ useEffect(() => {
+    async function loadData() {
+      const { data, error } = await supabase
+        .from("test")
+        .select("*");
+
+      if (error) {
+        console.error(error);
+      } else {
+        setRows(data);
+      }
+    }
+
+    loadData();
+  }, []);
+
+  return (
+    <main>
+      {rows.map((row) => (
+        <div key={row.id}>{row.ntitle}</div>
       ))}
     </main>
+  );
+}
+      
     
     <button onClick={seed}>Update User</button>
     <button onClick={addUser}>Insert User</button>

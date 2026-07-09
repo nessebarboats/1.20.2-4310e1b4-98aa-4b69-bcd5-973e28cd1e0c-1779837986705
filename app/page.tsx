@@ -70,7 +70,7 @@ async function seed() {
     { id: 1, name: "Example" },
   ]);
 }
-
+async function getUser() {
  const { data, error } = await supabase
     .from("test")
     .select("*");
@@ -78,7 +78,7 @@ async function seed() {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-
+}
 
   
   return (
@@ -105,7 +105,7 @@ async function seed() {
       </LandingSocialProofBand>
 
       <Header className="mb-0 lg:mb-0" />
-     
+     getUser();
     <main className="p-8">
       <h1>Supabase Data</h1>
 

@@ -56,7 +56,7 @@ export default function Home() {
 
    async function addUser() {
     const { data, error } = await supabase
-      .from("users")
+      .from("test")
       .insert([
         {
           name: "Name5555",

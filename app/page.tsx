@@ -23,11 +23,12 @@ import { LandingProductVideoFeature } from '@/components/landing/LandingProductV
 import { LandingPricingSection } from '@/components/landing/pricing/LandingPricingSection';
 import { LandingPricingPlan } from '@/components/landing/pricing/LandingPricingPlan';
 import MasonryGallery from "@/components/MasonryGallery";
-
+"use client";
+import { supabase } from "@/lib/supabase";
 import Image from "next/image"
 
 import { AspectRatio } from "@/components/shared/ui/aspect-ratio"
-import { supabase } from "@/lib/supabase";
+
 
 import {
   ChromeIcon,

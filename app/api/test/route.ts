@@ -18,3 +18,13 @@ export async function GET() {
     data,
   });
 }
+
+export async function POST(req: Request) {
+  const body = await req.json()
+
+  const { data, error } = await supabase
+    .from('test')
+    .insert(body)
+
+  return Response.json({ data, error })
+}

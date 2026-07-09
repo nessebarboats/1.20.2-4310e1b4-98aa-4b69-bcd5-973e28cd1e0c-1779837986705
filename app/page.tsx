@@ -71,11 +71,20 @@ async function seed() {
   ]);
 }
 
+ const { data, error } = await supabase
+    .from("test")
+    .select("*");
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
 
   
   return (
-    <button onClick={seed}>Update User</button>
-    <button onClick={addUser}>Insert User</button>
+
+
+    
     <div className="flex flex-col w-full items-center fancy-overlay">
        
       <LandingSocialProofBand invert={false} className="hidden md:flex">
@@ -97,7 +106,19 @@ async function seed() {
 
       <Header className="mb-0 lg:mb-0" />
      
+    <main className="p-8">
+      <h1>Supabase Data</h1>
 
+      {data?.map((row) => (
+        <div key={row.id}>
+          <p>{row.ntitle}</p>
+          <small>{row.created_at}</small>
+        </div>
+      ))}
+    </main>
+    
+    <button onClick={seed}>Update User</button>
+    <button onClick={addUser}>Insert User</button>
       
    <AspectRatio ratio={16 / 9} >
       <Image

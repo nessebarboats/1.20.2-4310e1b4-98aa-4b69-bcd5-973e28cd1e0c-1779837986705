@@ -53,7 +53,7 @@ import {
 } from 'lucide-react';
 
 
-export default function Home() {
+export default async function Home() {
 
   const { data, error } = await supabase
     .from("test")

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
-
+"use client";
 export async function POST() {
 
 const apiKey = process.env.STORMGLASS_API_KEY;
@@ -37,4 +37,26 @@ if (!apiKey) {
   return NextResponse.json({
     success: true,
   });
+}
+
+
+export default function UpdateStormglassButton() {
+  async function updateData() {
+    const res = await fetch("/api/stormglass/update", {
+      method: "POST",
+    });
+
+    const json = await res.json();
+
+    alert(json.success ? "Updated" : "Failed");
+  }
+
+  return (
+    <button
+      onClick={updateData}
+      className="rounded bg-blue-600 px-4 py-2 text-white"
+    >
+      Update Stormglass
+    </button>
+  );
 }

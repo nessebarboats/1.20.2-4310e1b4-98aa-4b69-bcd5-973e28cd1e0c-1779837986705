@@ -124,10 +124,10 @@ async function seed() {
 
 
       
-     <AspectRatio ratio={16 / 9} > 
+<div className="flex flex-col w-full items-center fancy-overlay">
     <button onClick={seed}>Update User</button>
     <button onClick={addUser}>Insert User</button>
-        </AspectRatio>
+        </div>
    <AspectRatio ratio={16 / 9} >
       <Image
         src="/static/images/slide2.jpg"

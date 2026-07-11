@@ -116,15 +116,13 @@ async function seed() {
 
 
 
-      {
-  return (
     <main>
       {rows.map((row) => (
         <div key={row.id}>{row.ntitle}</div>
       ))}
     </main>
-  );
-}
+
+
       
      <AspectRatio ratio={16 / 9} > 
     <button onClick={seed}>Update User</button>

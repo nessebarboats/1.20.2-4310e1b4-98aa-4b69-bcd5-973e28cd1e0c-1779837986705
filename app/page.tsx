@@ -91,8 +91,8 @@ async function seed() {
   return (
 
       
- 
-    <button onClick={addUser}>Insert User</button>
+    <button onClick={seed()}>Update User</button>
+    <button onClick={addUser()}>Insert User</button>
     
     <div className="flex flex-col w-full items-center fancy-overlay">
        

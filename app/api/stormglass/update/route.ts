@@ -6,7 +6,7 @@ export async function POST() {
     `https://api.stormglass.io/v2/weather/point?lat=42.66001330172242&lng=27.74372845766975`,
     {
       headers: {
-        Authorization: process.env.918deae0-7b2e-11f1-bcd5-0242ac120004-918decd4-7b2e-11f1-bcd5-0242ac120004,
+        Authorization: process.env.STORMGLASS_API_KEY,
       },
     }
   );

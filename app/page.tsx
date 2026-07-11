@@ -116,11 +116,11 @@ async function seed() {
 
 
 
-    <main>
+    <div className="flex flex-col w-full items-center fancy-overlay">
       {rows.map((row) => (
         <div key={row.id}>{row.ntitle}</div>
       ))}
-    </main>
+    </div>
 
 
       

@@ -52,17 +52,29 @@ import {
   ShipWheel
 } from 'lucide-react';
 
+type GetRows = {
+  id: number;
+  name: string;
+};
 
-export default async function Home() {
+export default function Home() {
 
-  const { data, error } = await supabase
-    .from("test")
-    .select("*")
-    .order("id");
+ const [rows, setRows] = useState<GetRows[]>([]);
+  useEffect(() => {
+    async function load() {
+      const { data, error } = await supabase
+        .from("test")
+        .select("*")
+        .order("id");
 
-  if (error) {
-    return <div>{error.message}</div>;
-  }
+      if (!error && data) {
+        setRows(data);
+      }
+    }
+
+    load();
+  }, []);
+
     
   
    async function addUser() {
@@ -88,13 +100,9 @@ async function seed() {
   
   return (
 
-      <main className="p-10">
-      <h1>Users</h1>
-
-      {data?.map((row) => (
-        <div key={row.id}>
-          {row.id} - {row.ntitle}
-        </div>
+    <main>
+      {rows.map((row) => (
+        <div key={row.id}>{row.ntitle}</div>
       ))}
     </main>
 

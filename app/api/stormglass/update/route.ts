@@ -11,7 +11,7 @@ export async function POST() {
     }
   );
 
-  const json = await response.json();
+  const json = await response.json(); 
 
   // parse json...
 

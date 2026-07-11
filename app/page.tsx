@@ -100,15 +100,15 @@ async function seed() {
   
   return (
 
-    <main>
-      {rows.map((row) => (
-        <div key={row.id}>{row.ntitle}</div>
-      ))}
-    </main>
+
+
 
     <div className="flex flex-col w-full items-center fancy-overlay">
 
-      
+            {rows.map((row) => (
+        <div key={row.id}>{row.ntitle}</div>
+      ))}
+ 
     <button onClick={seed}>Update User</button>
     <button onClick={addUser}>Insert User</button>
        

@@ -72,6 +72,20 @@ async function seed() {
   ]);
 }
 
+    async function loadData() {
+      const { data, error } = await supabase
+        .from("test")
+        .select("*");
+
+      if (error) {
+        console.error(error);
+      } else {
+        setRows(data);
+      }
+    }
+
+    loadData();
+
 
   
   return (
@@ -101,21 +115,7 @@ async function seed() {
 
 
 
- useEffect(() =&gt; {
-    async function loadData() {
-      const { data, error } = await supabase
-        .from("test")
-        .select("*");
 
-      if (error) {
-        console.error(error);
-      } else {
-        setRows(data);
-      }
-    }
-
-    loadData();
-  }, []);
 
   return (
     <main>

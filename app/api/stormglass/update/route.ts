@@ -10,7 +10,7 @@ if (!apiKey) {
 }
 
   const response = await fetch(
-    `https://api.stormglass.io/v2/weather/point?lat=42.66001330172242&lng=27.74372845766975`,
+    `https://api.stormglass.io/v2/weather/point?lat=42.66001330172242&lng=27.74372845766975&params=waveHeight,windSpeed,airTemperature`,
     {
       headers: {
         Authorization: apiKey,

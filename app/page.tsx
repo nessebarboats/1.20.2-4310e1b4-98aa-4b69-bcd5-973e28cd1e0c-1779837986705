@@ -30,7 +30,7 @@ import { supabase } from "@/lib/supabase";
 import Image from "next/image"
 
 import { AspectRatio } from "@/components/shared/ui/aspect-ratio"
-
+import UpdateStormglassButton from "@/components/UpdateStormglassButton";
 
 import {
   ChromeIcon,
@@ -111,7 +111,7 @@ async function seed() {
  
     <button onClick={seed}>Update User</button>
     <button onClick={addUser}>Insert User</button>
-       
+        <UpdateStormglassButton />
       <LandingSocialProofBand invert={false} className="hidden md:flex">
 
 

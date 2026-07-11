@@ -116,7 +116,7 @@ async function seed() {
 
 
 
-
+      {
   return (
     <main>
       {rows.map((row) => (

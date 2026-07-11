@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
-"use client";
+
 export async function POST() {
 
 const apiKey = process.env.STORMGLASS_API_KEY;

@@ -90,7 +90,11 @@ async function seed() {
   
   return (
 
-
+      
+<div className="flex flex-col w-full items-center fancy-overlay">
+    <button onClick={seed}>Update User</button>
+    <button onClick={addUser}>Insert User</button>
+        </div>
     
     <div className="flex flex-col w-full items-center fancy-overlay">
        
@@ -113,21 +117,6 @@ async function seed() {
 
       <Header className="mb-0 lg:mb-0" />
 
-
-
-
-    <div className="flex flex-col w-full items-center fancy-overlay">
-      {rows.map((row) => (
-        <div key={row.id}>{row.ntitle}</div>
-      ))}
-    </div>
-
-
-      
-<div className="flex flex-col w-full items-center fancy-overlay">
-    <button onClick={seed}>Update User</button>
-    <button onClick={addUser}>Insert User</button>
-        </div>
    <AspectRatio ratio={16 / 9} >
       <Image
         src="/static/images/slide2.jpg"

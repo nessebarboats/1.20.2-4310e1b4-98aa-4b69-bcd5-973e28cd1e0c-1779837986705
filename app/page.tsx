@@ -126,10 +126,10 @@ async function seed() {
   );
 }
       
-    
+     <AspectRatio ratio={16 / 9} > 
     <button onClick={seed}>Update User</button>
     <button onClick={addUser}>Insert User</button>
-      
+        </AspectRatio>
    <AspectRatio ratio={16 / 9} >
       <Image
         src="/static/images/slide2.jpg"

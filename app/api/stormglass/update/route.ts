@@ -23,6 +23,24 @@ export async function POST() {
 
     const stormglass = await response.json();
 
+  const { error } = await supabase
+    .from("stormglass")
+    .insert({
+      wave_height: json.hours[0].waveHeight.noaa,
+      wind_speed: json.hours[0].windSpeed.noaa,
+      created_at: new Date().toISOString(),
+    });
+
+  if (error) {
+    return NextResponse.json(error, { status: 500 });
+  }
+
+  return NextResponse.json({
+    success: true,
+  });
+
+
+    
     console.log(stormglass);
 
     return NextResponse.json(stormglass);

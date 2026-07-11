@@ -55,6 +55,12 @@ import {
 
 export default function Home() {
  const [rows, setRows] = useState<any[]>([]);
+
+
+    <button onClick={seed}>Update User</button>
+    <button onClick={addUser}>Insert User</button>
+    
+  
    async function addUser() {
     const { data, error } = await supabase
       .from("test")
@@ -91,9 +97,7 @@ async function seed() {
   return (
 
       
-    <button onClick={seed()}>Update User</button>
-    <button onClick={addUser()}>Insert User</button>
-    
+
     <div className="flex flex-col w-full items-center fancy-overlay">
        
       <LandingSocialProofBand invert={false} className="hidden md:flex">

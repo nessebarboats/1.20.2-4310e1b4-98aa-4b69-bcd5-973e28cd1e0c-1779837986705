@@ -2,11 +2,18 @@ import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 
 export async function POST() {
+
+const apiKey = process.env.STORMGLASS_API_KEY;
+
+if (!apiKey) {
+  throw new Error("Missing STORMGLASS_API_KEY");
+}
+
   const response = await fetch(
     `https://api.stormglass.io/v2/weather/point?lat=42.66001330172242&lng=27.74372845766975`,
     {
       headers: {
-        Authorization: process.env.STORMGLASS_API_KEY,
+        Authorization: apiKey,
       },
     }
   );

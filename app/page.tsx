@@ -31,7 +31,7 @@ import Image from "next/image"
 
 import { AspectRatio } from "@/components/shared/ui/aspect-ratio"
 import UpdateStormglassButton from "@/components/UpdateStormglassButton";
-
+import Map from "@/components/Map";
 import {
   ChromeIcon,
   FigmaIcon,
@@ -128,6 +128,10 @@ async function seed() {
           Mon to Sat: 8.00 am - 7.00 pm
         </LandingSocialProofBandItem>
       </LandingSocialProofBand>
+ <main>
+      <h1>Stormglass Map</h1>
+      <Map />
+    </main>
 
       <Header className="mb-0 lg:mb-0" />
 

@@ -27,7 +27,15 @@ export default function Map() {
 
     return () => map.remove();
   }, []);
-
+map.addLayer({
+  id: "custom-water",
+  type: "fill",
+  source: "composite",
+  "source-layer": "water",
+  paint: {
+    "fill-color": "#1976d2"
+  }
+});
   return (
     <div
       ref={mapContainer}

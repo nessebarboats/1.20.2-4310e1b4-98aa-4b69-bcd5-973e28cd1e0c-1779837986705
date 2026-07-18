@@ -16,7 +16,7 @@ export default function Map() {
     const map = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v12",
-      center: [27.7437, 42.6600],
+      center: [42.659820, 27.743707],
       zoom: 10,
     });
 
@@ -31,7 +31,7 @@ export default function Map() {
     <div
       ref={mapContainer}
       style={{
-        width: "100%",
+        width: "500px",
         height: "500px",
         borderRadius: "12px",
       }}

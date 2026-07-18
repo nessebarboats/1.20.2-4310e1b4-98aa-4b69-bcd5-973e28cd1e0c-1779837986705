@@ -18,6 +18,7 @@ export default function Map() {
       style: "mapbox://styles/mapbox/satellite-streets-v12",
       center: [27.7437, 42.6598],
       zoom: 20,
+      
     });
 
     new mapboxgl.Marker()
@@ -34,6 +35,7 @@ export default function Map() {
         width: "1500px",
         height: "500px",
         borderRadius: "12px",
+        fill-color: "#08304d"
       }}
     />
   );

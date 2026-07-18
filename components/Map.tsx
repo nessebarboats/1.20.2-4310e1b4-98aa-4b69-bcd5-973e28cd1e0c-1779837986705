@@ -31,7 +31,7 @@ export default function Map() {
     <div
       ref={mapContainer}
       style={{
-        width: "500px",
+        width: "1500px",
         height: "500px",
         borderRadius: "12px",
       }}

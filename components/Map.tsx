@@ -35,7 +35,6 @@ export default function Map() {
         width: "1500px",
         height: "500px",
         borderRadius: "12px",
-        fill-color: "#08304d"
       }}
     />
   );

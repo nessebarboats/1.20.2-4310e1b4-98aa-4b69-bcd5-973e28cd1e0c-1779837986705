@@ -132,10 +132,7 @@ async function seed() {
       <h1>Stormglass Map</h1>
       <Map />
     </main>
-<div
-    ref={mapContainer}
-    className="w-full h-[500px] rounded-xl"
-/>
+
       <Header className="mb-0 lg:mb-0" />
 
    <AspectRatio ratio={16 / 9} >

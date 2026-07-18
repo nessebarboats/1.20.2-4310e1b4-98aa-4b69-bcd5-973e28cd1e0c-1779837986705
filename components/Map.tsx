@@ -16,12 +16,12 @@ export default function Map() {
     const map = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v12",
-      center: [42.659820, 27.743707],
+      center: [27.7437, 42.6598],
       zoom: 10,
     });
 
     new mapboxgl.Marker()
-      .setLngLat([27.7437, 42.6600])
+      .setLngLat([27.7437, 42.6598])
       .addTo(map);
 
     return () => map.remove();

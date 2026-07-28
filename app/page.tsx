@@ -28,6 +28,8 @@ import MasonryGallery from "@/components/MasonryGallery";
 
 import { supabase } from "@/lib/supabase";
 import Image from "next/image"
+import { WaveLayer } from ""@/lib/map/WaveLayer";
+
 
 import { AspectRatio } from "@/components/shared/ui/aspect-ratio"
 import UpdateStormglassButton from "@/components/UpdateStormglassButton";
@@ -94,9 +96,32 @@ async function seed() {
   ]);
 }
 
+const particles = [];
+
+for (let i = 0; i < 1000; i++) {
+
+    particles.push({
+
+        lng: 27.7 + Math.random() * 0.5,
+        lat: 42.5 + Math.random() * 0.5,
+
+        direction: Math.random() * 360,
+
+        height: 1 + Math.random() * 3
+
+    });
+
+}
 
 
 
+map.on("load", () => {
+
+    const layer = new WaveLayer(map, particles);
+
+    map.addLayer(layer);
+
+});
   
   return (
 

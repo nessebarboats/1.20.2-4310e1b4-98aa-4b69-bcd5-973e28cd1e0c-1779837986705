@@ -123,7 +123,7 @@ for (let i = 0; i < 1000; i++) {
 
 
 
-map.on("load", () => {
+Map.on("load", () => {
 
     const layer = new WaveLayer(map, particles);
 

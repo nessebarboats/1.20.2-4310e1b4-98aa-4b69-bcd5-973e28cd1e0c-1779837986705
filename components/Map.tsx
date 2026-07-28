@@ -38,5 +38,33 @@ export default function Map() {
       }}
     />
   );
+
 }
+
+const particles = [];
+
+for (let i = 0; i < 1000; i++) {
+
+    particles.push({
+
+        lng: 27.7 + Math.random() * 0.5,
+        lat: 42.5 + Math.random() * 0.5,
+
+        direction: Math.random() * 360,
+
+        height: 1 + Math.random() * 3
+
+    });
+
+}
+
+
+
+Map.on("load", () => {
+
+    const layer = new WaveLayer(map, particles);
+
+    map.addLayer(layer);
+
+});
 

@@ -96,7 +96,15 @@ async function seed() {
   ]);
 }
 
-const particles = [];
+interface WaveParticle {
+    lng: number;
+    lat: number;
+    direction: number;
+    height: number;
+}
+  
+const particles: WaveParticle[] = [];
+//const particles = [];
 
 for (let i = 0; i < 1000; i++) {
 

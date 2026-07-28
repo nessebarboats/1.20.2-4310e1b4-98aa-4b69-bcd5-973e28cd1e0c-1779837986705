@@ -28,7 +28,7 @@ import MasonryGallery from "@/components/MasonryGallery";
 
 import { supabase } from "@/lib/supabase";
 import Image from "next/image"
-import { WaveLayer } from ""@/lib/map/WaveLayer";
+import { WaveLayer } from "@/lib/map/WaveLayer";
 
 
 import { AspectRatio } from "@/components/shared/ui/aspect-ratio"

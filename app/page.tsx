@@ -29,7 +29,8 @@ import MasonryGallery from "@/components/MasonryGallery";
 import { supabase } from "@/lib/supabase";
 import Image from "next/image"
 import { WaveLayer } from "@/lib/map/WaveLayer";
-
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 import { AspectRatio } from "@/components/shared/ui/aspect-ratio"
 import UpdateStormglassButton from "@/components/UpdateStormglassButton";

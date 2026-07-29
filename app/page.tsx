@@ -20,7 +20,7 @@ import { LandingFaqCollapsibleSection } from '@/components/landing/LandingFaqCol
 import { LandingSocialProofBand } from '@/components/landing/social-proof/LandingSocialProofBand';
 import { LandingSocialProofBandItem } from '@/components/landing/social-proof/LandingSocialProofBandItem';
 import { LandingProductVideoFeature } from '@/components/landing/LandingProductVideoFeature';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef  } from "react";
 
 import { LandingPricingSection } from '@/components/landing/pricing/LandingPricingSection';
 import { LandingPricingPlan } from '@/components/landing/pricing/LandingPricingPlan';

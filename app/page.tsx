@@ -147,7 +147,7 @@ const mapRef = useRef<mapboxgl.Map | null>(null);
   return (
 
 
-<div id="map" style={{ width: "100%", height: "100vh" }} />;
+<div id="map" style={{ width: "100%", height: "100vh" }} />
 
     <div className="flex flex-col w-full items-center fancy-overlay">
 

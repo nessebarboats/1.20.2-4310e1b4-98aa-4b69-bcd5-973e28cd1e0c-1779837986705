@@ -135,7 +135,7 @@ const mapRef = useRef<mapboxgl.Map | null>(null);
       console.log("Map loaded");
        const layer = new WaveLayer(mapRef, particles);
 
-      mapRef.current.addLayer(layer);
+      mapRef.current!.addLayer(layer);
 
     });
 

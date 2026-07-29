@@ -147,12 +147,11 @@ const mapRef = useRef<mapboxgl.Map | null>(null);
   return (
 
 
-<div id="map" style={{ width: "100%", height: "100vh" }} />
 
     <div className="flex flex-col w-full items-center fancy-overlay">
 
             {rows.map((row) => (
-        <div key={row.id}>{row.name}</div>
+        <div id="map" key={row.id}>{row.name}</div>
       ))}
  
     <button onClick={seed}>Update User</button>

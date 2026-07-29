@@ -102,13 +102,52 @@ interface WaveParticle {
     direction: number;
     height: number;
 }
+
+  const particles: WaveParticle[] = [];
+
+for (let i = 0; i < 1000; i++) {
+
+    particles.push({
+
+        lng: 27.7 + Math.random() * 0.5,
+        lat: 42.5 + Math.random() * 0.5,
+
+        direction: Math.random() * 360,
+
+        height: 1 + Math.random() * 3
+
+    });
+
+}
   
+const mapRef = useRef<mapboxgl.Map | null>(null);
+
+  useEffect(() => {
+    mapRef.current = new mapboxgl.Map({
+      container: "map",
+      style: "mapbox://styles/mapbox/standard",
+      center: [27.7, 42.66],
+      zoom: 7,
+    });
+
+    mapRef.current.on("load", () => {
+      console.log("Map loaded");
+       const layer = new WaveLayer(mapRef, particles);
+
+      mapRef.addLayer(layer);
+
+    });
+
+    return () => {
+      mapRef.current?.remove();
+    };
+  }, []);
 
   
   return (
 
 
-
+<div id="map" style={{ width: "100%", height: "100vh" }} />;
 
     <div className="flex flex-col w-full items-center fancy-overlay">
 

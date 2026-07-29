@@ -40,8 +40,13 @@ export default function Map() {
   );
 
 }
-
-const particles = [];
+interface WaveParticle {
+    lng: number;
+    lat: number;
+    direction: number;
+    height: number;
+}
+const particles: WaveParticle[] = [];
 
 for (let i = 0; i < 1000; i++) {
 

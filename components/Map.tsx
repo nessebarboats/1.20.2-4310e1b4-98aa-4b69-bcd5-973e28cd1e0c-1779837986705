@@ -22,7 +22,7 @@ export default function Map() {
     });
 
 
-mapContainer.current?.addSource("weather", {
+mapRef.current?.getMap().addSource("weather", {
     type: "geojson",
     data: {
 "type":"FeatureCollection",
@@ -44,7 +44,7 @@ mapContainer.current?.addSource("weather", {
 }
 });
 
-mapContainer.current?.addLayer({
+mapRef.current?.getMap().addLayer({
     id: "temperature",
     type: "heatmap",
     source: "weather",

@@ -96,53 +96,7 @@ async function seed() {
     { id: 1, name: "Example" },
   ]);
 }
-
-interface WaveParticle {
-    lng: number;
-    lat: number;
-    direction: number;
-    height: number;
-}
-
-  const particles: WaveParticle[] = [];
-
-for (let i = 0; i < 1000; i++) {
-
-    particles.push({
-
-        lng: 27.7 + Math.random() * 0.5,
-        lat: 42.5 + Math.random() * 0.5,
-
-        direction: Math.random() * 360,
-
-        height: 1 + Math.random() * 3
-
-    });
-
-}
-  
-const mapRef = useRef<mapboxgl.Map | null>(null);
-
-  useEffect(() => {
-    mapRef.current = new mapboxgl.Map({
-      container: "map",
-      style: "mapbox://styles/mapbox/standard",
-      center: [27.7, 42.66],
-      zoom: 7,
-    });
-
-    mapRef.current.on("load", () => {
-      console.log("Map loaded");
-       const layer = new WaveLayer(mapRef, particles);
-
-      mapRef.current!.addLayer(WaveLayer);
-
-    });
-
-    return () => {
-      mapRef.current?.remove();
-    };
-  }, []);
+ 
 
   
   return (

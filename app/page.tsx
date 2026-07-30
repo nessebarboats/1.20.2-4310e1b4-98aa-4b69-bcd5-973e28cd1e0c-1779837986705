@@ -96,7 +96,42 @@ async function seed() {
     { id: 1, name: "Example" },
   ]);
 }
- 
+ Map.addSource("weather", {
+    type: "geojson",
+    data: {
+"type":"FeatureCollection",
+"features":[
+{
+"type":"Feature",
+"geometry":{
+"type":"Point",
+"coordinates":[27.74,42.66]
+},
+"properties":{
+"temperature":24.1,
+"waveHeight":1.3,
+"windSpeed":12,
+"windDirection":140
+}
+}
+]
+}
+});
+
+Map.addLayer({
+    id: "temperature",
+    type: "heatmap",
+    source: "weather",
+    paint: {
+        "heatmap-weight": [
+            "interpolate",
+            ["linear"],
+            ["get","temperature"],
+            0,0,
+            35,1
+        ]
+    }
+});
 
   
   return (

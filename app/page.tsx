@@ -132,7 +132,6 @@ Map.addLayer({
         ]
     }
 });*/
-
   
   return (
 

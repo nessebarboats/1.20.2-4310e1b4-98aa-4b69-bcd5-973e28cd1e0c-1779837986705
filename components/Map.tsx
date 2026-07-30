@@ -21,6 +21,45 @@ export default function Map() {
       
     });
 
+
+mapContainer.addSource("weather", {
+    type: "geojson",
+    data: {
+"type":"FeatureCollection",
+"features":[
+{
+"type":"Feature",
+"geometry":{
+"type":"Point",
+"coordinates":[27.74,42.66]
+},
+"properties":{
+"temperature":24.1,
+"waveHeight":1.3,
+"windSpeed":12,
+"windDirection":140
+}
+}
+]
+}
+});
+
+mapContainer.addLayer({
+    id: "temperature",
+    type: "heatmap",
+    source: "weather",
+    paint: {
+        "heatmap-weight": [
+            "interpolate",
+            ["linear"],
+            ["get","temperature"],
+            0,0,
+            35,1
+        ]
+    }
+});
+    
+
     new mapboxgl.Marker()
       .setLngLat([27.7437, 42.6598])
       .addTo(map);

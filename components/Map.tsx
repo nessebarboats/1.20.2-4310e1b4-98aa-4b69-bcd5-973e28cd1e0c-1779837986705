@@ -9,7 +9,8 @@ mapboxgl.accessToken = "pk.eyJ1IjoiaW50aWJnMSIsImEiOiJjbXJtYnp1MXEwMG90MndxeWNvc
 
 export default function Map() {
   const mapContainer = useRef<HTMLDivElement>(null);
-
+  const mapRef = useRef<mapboxgl.Map | null>(null);
+  
   useEffect(() => {
     if (!mapContainer.current) return;
 
@@ -22,7 +23,7 @@ export default function Map() {
     });
 
 
-mapContainer.current?.getMap().addSource("weather", {
+mapRef.current?.addSource("weather", {
     type: "geojson",
     data: {
 "type":"FeatureCollection",
@@ -44,7 +45,7 @@ mapContainer.current?.getMap().addSource("weather", {
 }
 });
 
-mapContainer.current?.getMap().addLayer({
+mapRef.current?.getMap().addLayer({
     id: "temperature",
     type: "heatmap",
     source: "weather",

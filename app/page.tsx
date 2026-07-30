@@ -96,7 +96,7 @@ async function seed() {
     { id: 1, name: "Example" },
   ]);
 }
- Map.addSource("weather", {
+/* Map.addSource("weather", {
     type: "geojson",
     data: {
 "type":"FeatureCollection",
@@ -131,7 +131,7 @@ Map.addLayer({
             35,1
         ]
     }
-});
+});*/
 
   
   return (

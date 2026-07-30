@@ -40,5 +40,23 @@ export default function Map() {
   );
 
 }
+map.addSource("weather", {
+    type: "geojson",
+    data: "/api/weather"
+});
 
+map.addLayer({
+    id: "temperature",
+    type: "heatmap",
+    source: "weather",
+    paint: {
+        "heatmap-weight": [
+            "interpolate",
+            ["linear"],
+            ["get","temperature"],
+            0,0,
+            35,1
+        ]
+    }
+});
 

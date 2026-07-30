@@ -40,12 +40,29 @@ export default function Map() {
   );
 
 }
-map.addSource("weather", {
+Map.addSource("weather", {
     type: "geojson",
-    data: "/api/weather"
+    data: {
+"type":"FeatureCollection",
+"features":[
+{
+"type":"Feature",
+"geometry":{
+"type":"Point",
+"coordinates":[27.74,42.66]
+},
+"properties":{
+"temperature":24.1,
+"waveHeight":1.3,
+"windSpeed":12,
+"windDirection":140
+}
+}
+]
+}
 });
 
-map.addLayer({
+Map.addLayer({
     id: "temperature",
     type: "heatmap",
     source: "weather",

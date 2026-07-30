@@ -45,7 +45,7 @@ mapRef.current?.addSource("weather", {
 }
 });
 
-mapRef.current?.getMap().addLayer({
+mapRef.current?.addLayer({
     id: "temperature",
     type: "heatmap",
     source: "weather",

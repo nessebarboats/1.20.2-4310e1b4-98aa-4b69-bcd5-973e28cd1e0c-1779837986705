@@ -129,30 +129,29 @@ mapRef.current = map;
     });
 
   });*/
-//    map.on("load", async () => {
+map.on("load", async () => {
   map.addSource("stormglass", {
     type: "geojson",
     data: "/api/weather",
   });
 
-map.addLayer({
-  id: "water-temperature",
-  type: "circle",
-  source: "stormglass",
-  paint: {
-    "circle-radius": 8,
-    "circle-color": [
-      "interpolate",
-      ["linear"],
-      ["get", "waterTemperature"],
-      0, "#0033ff",
-      10, "#00ffff",
-      20, "#00ff00",
-      25, "#ffff00",
-      30, "#ff0000"
-    ],
-    "circle-opacity": 0.8
-  }
+  map.addLayer({
+    id: "water-temperature",
+    type: "circle",
+    source: "stormglass",
+    paint: {
+      "circle-radius": 8,
+      "circle-color": [
+        "interpolate",
+        ["linear"],
+        ["get", "waterTemperature"],
+        0, "#0033ff",
+        10, "#00ffff",
+        20, "#00ff00",
+        30, "#ff0000",
+      ],
+    },
+  });
 });
 
     return () => map.remove();

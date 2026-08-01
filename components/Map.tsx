@@ -18,7 +18,7 @@ export default function Map() {
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/satellite-streets-v12",
       center: [27.7437, 42.6598],
-      zoom: 20,
+      zoom: 10,
       
     });
 

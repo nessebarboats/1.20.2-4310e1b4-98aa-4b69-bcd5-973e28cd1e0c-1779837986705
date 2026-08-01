@@ -84,3 +84,32 @@ mapRef.current?.addLayer({
 }
 
 
+
+
+
+map.on("load", async () => {
+  const response = await fetch("/api/weather");
+  const geojson = await response.json();
+
+  map.addSource("weather", {
+    type: "geojson",
+    data: geojson,
+  });
+
+  map.addLayer({
+    id: "temperature",
+    type: "circle",
+    source: "weather",
+    paint: {
+      "circle-radius": 6,
+      "circle-color": [
+        "interpolate",
+        ["linear"],
+        ["get", "temperature"],
+        0, "#0000ff",
+        15, "#00ff00",
+        30, "#ff0000"
+      ]
+    }
+  });
+});

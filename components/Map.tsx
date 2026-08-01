@@ -129,7 +129,7 @@ mapRef.current = map;
     });
 
   });*/
-    map.on("load", async () => {
+//    map.on("load", async () => {
   map.addSource("stormglass", {
     type: "geojson",
     data: "/api/weather",
@@ -171,7 +171,7 @@ map.addLayer({
 
   }
   
-}
+
 
 
 

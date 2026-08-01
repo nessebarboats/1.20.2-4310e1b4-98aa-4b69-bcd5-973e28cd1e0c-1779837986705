@@ -22,6 +22,8 @@ export default function Map() {
       
     });
 
+mapRef.current = map;
+    
 
 mapRef.current?.addSource("weather", {
     type: "geojson",

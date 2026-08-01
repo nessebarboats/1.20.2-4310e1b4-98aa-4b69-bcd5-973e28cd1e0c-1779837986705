@@ -32,7 +32,7 @@ mapRef.current?.addSource("weather", {
 "type":"Feature",
 "geometry":{
 "type":"Point",
-"coordinates":[27.74,42.66]
+"coordinates":[27.7437, 42.6598]
 },
 "properties":{
 "temperature":24.1,

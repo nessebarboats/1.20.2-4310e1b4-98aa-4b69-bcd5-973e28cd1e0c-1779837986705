@@ -22,9 +22,9 @@ export default function Map() {
       
     });
 
-mapRef.current = map;
-    
 
+    
+/*
 mapRef.current?.addSource("weather", {
     type: "geojson",
     data: {
@@ -60,7 +60,7 @@ mapRef.current?.addLayer({
             35,1
         ]
     }
-});
+});*/
     
 
     new mapboxgl.Marker()

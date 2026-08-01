@@ -23,7 +23,7 @@ export default function Map() {
     });
 
 
-    
+  /*  
 
 mapRef.current?.addSource("weather", {
     type: "geojson",
@@ -60,11 +60,11 @@ mapRef.current?.addLayer({
             35,1
         ]
     }
-});
+});*/
 
 
 
-
+/*
 map.on("load", async () => {
   const response = await fetch("/api/weather");
   const geojson = await response.json();
@@ -90,7 +90,7 @@ map.on("load", async () => {
       ]
     }
   });
-});
+});*/
 
 
     
@@ -101,6 +101,27 @@ map.on("load", async () => {
       .addTo(map);
 
 
+map.addLayer({
+  id: "water-temperature",
+  type: "circle",
+  source: "stormglass",
+  paint: {
+    "circle-radius": 8,
+    "circle-color": [
+      "interpolate",
+      ["linear"],
+      ["get", "waterTemperature"],
+      0, "#0033ff",
+      10, "#00ffff",
+      20, "#00ff00",
+      25, "#ffff00",
+      30, "#ff0000"
+    ],
+    "circle-opacity": 0.8
+  }
+});
+    
+/*
 
 
 mapRef.current = map;
@@ -126,7 +147,7 @@ mapRef.current = map;
       },
     });
 
-  });
+  });*/
     
 
     return () => map.remove();

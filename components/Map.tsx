@@ -61,28 +61,6 @@ mapRef.current?.addLayer({
         ]
     }
 });*/
-    
-
-    new mapboxgl.Marker()
-      .setLngLat([27.7437, 42.6598])
-      .addTo(map);
-
-    return () => map.remove();
-  }, []);
-
-  return (
-    <div
-      ref={mapContainer}
-      style={{
-        width: "1500px",
-        height: "500px",
-        borderRadius: "12px",
-      }}
-    />
-  );
-
-}
-
 
 
 
@@ -113,3 +91,32 @@ map.on("load", async () => {
     }
   });
 });
+
+
+    
+    
+
+    new mapboxgl.Marker()
+      .setLngLat([27.7437, 42.6598])
+      .addTo(map);
+
+    return () => map.remove();
+  }, []);
+
+  return (
+    <div
+      ref={mapContainer}
+      style={{
+        width: "1500px",
+        height: "500px",
+        borderRadius: "12px",
+      }}
+    />
+  );
+
+}
+
+
+
+
+

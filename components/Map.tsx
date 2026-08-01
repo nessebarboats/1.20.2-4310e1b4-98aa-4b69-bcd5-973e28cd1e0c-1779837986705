@@ -100,6 +100,35 @@ map.on("load", async () => {
       .setLngLat([27.7437, 42.6598])
       .addTo(map);
 
+
+
+
+mapRef.current = map;
+
+  map.on("load", () => {
+
+    // Weather source
+    map.addSource("weather", {
+      type: "raster",
+      tiles: [
+        "https://api.maptiler.com/tiles/v4/{z}/{x}/{y}.pbf?key=nYgctOP62wE84w5g1lpJ"
+      ],
+      tileSize: 256,
+    });
+
+    // Weather layer
+    map.addLayer({
+      id: "weather-layer",
+      type: "raster",
+      source: "weather",
+      paint: {
+        "raster-opacity": 0.6,
+      },
+    });
+
+  });
+    
+
     return () => map.remove();
   }, []);
 

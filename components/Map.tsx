@@ -129,23 +129,7 @@ mapRef.current = map;
     });
 
   });*/
-    
-
-    return () => map.remove();
-  }, []);
-
-  return (
-    <div
-      ref={mapContainer}
-      style={{
-        width: "1500px",
-        height: "500px",
-        borderRadius: "12px",
-      }}
-    />
-  );
-
-map.on("load", async () => {
+    map.on("load", async () => {
   map.addSource("stormglass", {
     type: "geojson",
     data: "/api/weather",
@@ -170,6 +154,22 @@ map.addLayer({
     "circle-opacity": 0.8
   }
 });
+
+    return () => map.remove();
+  }, []);
+
+  return (
+    <div
+      ref={mapContainer}
+      style={{
+        width: "1500px",
+        height: "500px",
+        borderRadius: "12px",
+      }}
+    />
+  );
+
+
   
 }
 

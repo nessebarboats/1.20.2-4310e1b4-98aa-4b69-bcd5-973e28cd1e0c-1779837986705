@@ -24,7 +24,7 @@ export default function Map() {
 
 
     
-/*bbb
+
 mapRef.current?.addSource("weather", {
     type: "geojson",
     data: {
@@ -60,7 +60,7 @@ mapRef.current?.addLayer({
             35,1
         ]
     }
-});*/
+});
 
 
 

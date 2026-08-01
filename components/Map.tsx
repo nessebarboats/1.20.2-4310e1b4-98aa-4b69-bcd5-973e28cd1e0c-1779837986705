@@ -119,6 +119,8 @@ mapRef.current = map;
     });
 
     // Weather layer
+
+    
     map.addLayer({
       id: "weather-layer",
       type: "raster",
@@ -129,6 +131,9 @@ mapRef.current = map;
     });
 
   });*/
+
+  mapRef.current = map;
+    
 map.on("load", async () => {
   map.addSource("stormglass", {
     type: "geojson",

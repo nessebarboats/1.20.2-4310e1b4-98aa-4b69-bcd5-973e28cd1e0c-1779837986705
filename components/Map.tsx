@@ -111,7 +111,7 @@ mapRef.current = map;
     map.addSource("weather", {
       type: "raster",
       tiles: [
-        "https://api.maptiler.com/tiles/v4/{z}/{x}/{y}.pbf?key=nYgctOP62wE84w5g1lpJ"
+        "https://api.maptiler.com/tiles/v4/tiles.json?key=nYgctOP62wE84w5g1lpJ"
       ],
       tileSize: 256,
     });

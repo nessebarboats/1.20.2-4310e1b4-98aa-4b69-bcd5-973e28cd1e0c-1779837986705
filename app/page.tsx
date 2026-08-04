@@ -29,8 +29,6 @@ import MasonryGallery from "@/components/MasonryGallery";
 import { supabase } from "@/lib/supabase";
 import Image from "next/image"
 
-import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
 
 import { AspectRatio } from "@/components/shared/ui/aspect-ratio"
 import UpdateStormglassButton from "@/components/UpdateStormglassButton";
@@ -136,10 +134,10 @@ async function seed() {
         className="h-full w-full rounded-md object-cover"
       />
     </AspectRatio>
-
-                  {rows.map((row) => (
-        <div id="map" key={row.id}>{row.name}</div>
-      ))}
+ <main>
+      <h1>Stormglass Map</h1>
+      <Map />
+    </main>
 <LandingFeatureList
         title="Awesome Features Await!"
         description="Unforgettable Sea Journeys"

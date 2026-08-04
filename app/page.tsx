@@ -96,42 +96,6 @@ async function seed() {
     { id: 1, name: "Example" },
   ]);
 }
-/* Map.addSource("weather", {
-    type: "geojson",
-    data: {
-"type":"FeatureCollection",
-"features":[
-{
-"type":"Feature",
-"geometry":{
-"type":"Point",
-"coordinates":[27.74,42.66]
-},
-"properties":{
-"temperature":24.1,
-"waveHeight":1.3,
-"windSpeed":12,
-"windDirection":140
-}
-}
-]
-}
-});
-
-Map.addLayer({
-    id: "temperature",
-    type: "heatmap",
-    source: "weather",
-    paint: {
-        "heatmap-weight": [
-            "interpolate",
-            ["linear"],
-            ["get","temperature"],
-            0,0,
-            35,1
-        ]
-    }
-});*/
   
   return (
 
@@ -162,10 +126,10 @@ Map.addLayer({
           Mon to Sat: 8.00 am - 7.00 pm
         </LandingSocialProofBandItem>
       </LandingSocialProofBand>
- <main>
+ <!--main>
       <h1>Stormglass Map</h1>
       <Map />
-    </main>
+    </main-->
 
       <Header className="mb-0 lg:mb-0" />
 

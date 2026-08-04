@@ -133,7 +133,7 @@ mapRef.current = map;
   });*/
 
 
-
+  mapRef.current = map;
     map.on("load", async () => {
   const response = await fetch("/api/weather");
   const data = await response.json();

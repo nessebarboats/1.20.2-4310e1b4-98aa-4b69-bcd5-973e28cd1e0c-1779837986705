@@ -132,6 +132,20 @@ mapRef.current = map;
 
   });*/
 
+
+
+    map.on("load", async () => {
+  const response = await fetch("/api/weather");
+  const data = await response.json();
+
+  console.log("Weather API:", data);
+
+  map.addSource("stormglass", {
+    type: "geojson",
+    data,
+  });
+});
+
   mapRef.current = map;
     
 map.on("load", async () => {

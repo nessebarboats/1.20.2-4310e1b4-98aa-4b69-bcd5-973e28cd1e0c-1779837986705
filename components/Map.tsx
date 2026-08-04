@@ -131,6 +131,9 @@ mapRef.current = map;
     });
 
   });*/
+
+  mapRef.current = map;
+    
 fetch("/api/weather")
   .then((res) => res.json())
   .then((data) => {

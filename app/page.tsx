@@ -103,9 +103,7 @@ async function seed() {
 
     <div className="flex flex-col w-full items-center fancy-overlay">
 
-            {rows.map((row) => (
-        <div id="map" key={row.id}>{row.name}</div>
-      ))}
+
  
     <button onClick={seed}>Update User</button>
     <button onClick={addUser}>Insert User</button>
@@ -126,10 +124,10 @@ async function seed() {
           Mon to Sat: 8.00 am - 7.00 pm
         </LandingSocialProofBandItem>
       </LandingSocialProofBand>
- <!--main>
+ <main>
       <h1>Stormglass Map</h1>
       <Map />
-    </main-->
+    </main>
 
       <Header className="mb-0 lg:mb-0" />
 

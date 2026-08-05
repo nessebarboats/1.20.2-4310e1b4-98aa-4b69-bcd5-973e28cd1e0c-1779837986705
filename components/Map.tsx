@@ -13,21 +13,31 @@ export default function Map() {
   
   useEffect(() => {
     if (!mapContainer.current) return;
-console.log("Before creating map");
-   const map = new mapboxgl.Map({
+
+const map = new mapboxgl.Map({
   container: mapContainer.current!,
   style: "mapbox://styles/mapbox/satellite-streets-v12",
   center: [27.7437, 42.6598],
   zoom: 10,
 });
-
+/*
 console.log("After creating map");
 
 map.on("load", () => {
   console.log("MAP LOAD EVENT");
-});
+});*/
 map.on("style.load", () => {
-  console.log("STYLE LOAD EVENT");
+
+ const response = await fetch("/api/weather");
+  const data = await response.json();
+
+  console.log("Weather API:", data);
+
+  map.addSource("stormglass", {
+    type: "geojson",
+    data,
+  });
+
 });
 
 map.on("error", (e) => {
@@ -35,26 +45,7 @@ map.on("error", (e) => {
 });
     
 
-    if (map.isStyleLoaded()) {
-  console.log("Style already loaded");
-  loadWeather();
-} else {
-  map.once("load", loadWeather);
-}
-
-async function loadWeather() {
-  console.log("Loading weather...");
-
-  const response = await fetch("/api/weather");
-  const data = await response.json();
-
-  console.log(data);
-
-  map.addSource("stormglass", {
-    type: "geojson",
-    data,
-  });
-}
+  
     
 
 map.on("load", async () => {

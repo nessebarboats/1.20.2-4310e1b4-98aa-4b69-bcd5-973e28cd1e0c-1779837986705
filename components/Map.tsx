@@ -21,6 +21,30 @@ export default function Map() {
   zoom: 10,
 });
 
+
+
+    if (map.isStyleLoaded()) {
+  console.log("Style already loaded");
+  loadWeather();
+} else {
+  map.once("load", loadWeather);
+}
+
+async function loadWeather() {
+  console.log("Loading weather...");
+
+  const response = await fetch("/api/weather");
+  const data = await response.json();
+
+  console.log(data);
+
+  map.addSource("stormglass", {
+    type: "geojson",
+    data,
+  });
+}
+    
+
 map.on("load", async () => {
   console.log("Map loaded");
 

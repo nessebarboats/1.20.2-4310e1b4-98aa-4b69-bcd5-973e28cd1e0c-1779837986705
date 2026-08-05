@@ -32,15 +32,17 @@ map.on("style.load", async () => {
   const data = await response.json();
 
   console.log("Weather API:", data);
-mapRef.current = map;
+
+  mapRef.current = map;
   map.addSource("stormglass", {
     type: "geojson",
     data,
   });
- map.addLayer({
+
+  map.addLayer({
     id: "temperature",
     type: "circle",
-    source: "weather",
+    source: "stormglass",
     paint: {
       "circle-radius": 6,
       "circle-color": [

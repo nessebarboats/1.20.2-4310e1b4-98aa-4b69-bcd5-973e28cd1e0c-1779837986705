@@ -68,7 +68,9 @@ console.log(map.getSource("stormglass"));
   }
 });
   console.log(map.getLayer("temperature"));
-  
+  console.log(
+  map.querySourceFeatures("stormglass")
+);
 });
 
 

@@ -34,22 +34,7 @@ export default function Map() {
   });
 });
 
-new mapboxgl.on("load", async () => {
-  const response = await fetch("/api/weather");
-  const data = await response.json();
 
-  console.log("Weather API:", data);
-
-  new mapboxgl.addSource("stormglass", {
-    type: "geojson",
-    data,
-  });
-});
-    
-
-    new mapboxgl.Marker()
-      .setLngLat([27.7437, 42.6598])
-      .addTo(map);
   /*  
 
 mapRef.current?.addSource("weather", {

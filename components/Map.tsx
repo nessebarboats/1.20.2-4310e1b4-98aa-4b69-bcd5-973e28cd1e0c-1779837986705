@@ -55,7 +55,7 @@ map.on("style.load", async () => {
       ]
     }
   });*/
-
+console.log(map.getSource("stormglass"));
     map.addLayer({
   id: "temperature",
   type: "circle",
@@ -67,7 +67,7 @@ map.on("style.load", async () => {
     "circle-stroke-color": "#ffffff"
   }
 });
-  
+  console.log(map.getLayer("temperature"));
   
 });
 

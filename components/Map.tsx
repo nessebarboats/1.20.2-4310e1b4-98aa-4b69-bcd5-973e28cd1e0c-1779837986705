@@ -17,7 +17,7 @@ export default function Map() {
 const map = new mapboxgl.Map({
   container: mapContainer.current!,
   //style: "mapbox://styles/mapbox/satellite-streets-v12",
-  style: "mapbox://styles/mapbox/dark-v11",
+  style: "mapbox://styles/mapbox/standard",
   center: [27.7437, 42.6598],
   zoom: 10,
 });
@@ -27,7 +27,27 @@ console.log("After creating map");
 map.on("load", () => {
   console.log("MAP LOAD EVENT");
 });*/
+/*
+map.on("style.load", () => {
+  if (!map.getSource("stormglass")) {
+    map.addSource("stormglass", {
+      type: "geojson",
+      data: YOUR_GEOJSON,
+    });
 
+    map.addLayer({
+      id: "temperature",
+      type: "circle",
+      source: "stormglass",
+      paint: {
+        "circle-radius": 10,
+        "circle-color": "#ff0000",
+      },
+    });
+  }
+});
+
+*/
 
 
 

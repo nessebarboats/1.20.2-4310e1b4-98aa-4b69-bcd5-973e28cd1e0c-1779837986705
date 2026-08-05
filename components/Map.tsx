@@ -54,9 +54,9 @@ map.on("style.load", async () => {
         30, "#ff0000"
       ]
     }
-  });
+  });*/
   
-});*/
+});
 
     map.addLayer({
   id: "temperature",

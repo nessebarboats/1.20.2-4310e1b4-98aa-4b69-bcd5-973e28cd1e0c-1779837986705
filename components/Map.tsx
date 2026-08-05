@@ -55,8 +55,6 @@ map.on("style.load", async () => {
       ]
     }
   });*/
-  
-});
 
     map.addLayer({
   id: "temperature",
@@ -69,6 +67,11 @@ map.on("style.load", async () => {
     "circle-stroke-color": "#ffffff"
   }
 });
+  
+  
+});
+
+
 
 map.on("error", (e) => {
   console.error("MAP ERROR", e);

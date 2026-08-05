@@ -32,12 +32,28 @@ map.on("style.load", async () => {
   const data = await response.json();
 
   console.log("Weather API:", data);
-
+mapRef.current = map;
   map.addSource("stormglass", {
     type: "geojson",
     data,
   });
-
+ map.addLayer({
+    id: "temperature",
+    type: "circle",
+    source: "weather",
+    paint: {
+      "circle-radius": 6,
+      "circle-color": [
+        "interpolate",
+        ["linear"],
+        ["get", "temperature"],
+        0, "#0000ff",
+        15, "#00ff00",
+        30, "#ff0000"
+      ]
+    }
+  });
+  
 });
 
 map.on("error", (e) => {
@@ -46,7 +62,7 @@ map.on("error", (e) => {
     
 
   
-    
+    /*
 
 map.on("load", async () => {
   console.log("Map loaded");
@@ -75,7 +91,7 @@ map.on("load", async () => {
   }
 }); 
     
-    
+    */
     
     /*
     const map = new mapboxgl.Map({

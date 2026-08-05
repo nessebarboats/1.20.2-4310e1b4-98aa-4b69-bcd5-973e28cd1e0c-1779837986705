@@ -39,7 +39,7 @@ map.on("style.load", async () => {
     data,
   });
 
-  map.addLayer({
+/*  map.addLayer({
     id: "temperature",
     type: "circle",
     source: "stormglass",
@@ -56,6 +56,18 @@ map.on("style.load", async () => {
     }
   });
   
+});*/
+
+    map.addLayer({
+  id: "temperature",
+  type: "circle",
+  source: "stormglass",
+  paint: {
+    "circle-radius": 10,
+    "circle-color": "#ff0000",
+    "circle-stroke-width": 2,
+    "circle-stroke-color": "#ffffff"
+  }
 });
 
 map.on("error", (e) => {

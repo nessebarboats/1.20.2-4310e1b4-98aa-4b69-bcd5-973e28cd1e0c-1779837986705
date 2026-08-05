@@ -13,7 +13,7 @@ export default function Map() {
   
   useEffect(() => {
     if (!mapContainer.current) return;
-
+console.log("Before creating map");
    const map = new mapboxgl.Map({
   container: mapContainer.current!,
   style: "mapbox://styles/mapbox/satellite-streets-v12",
@@ -21,7 +21,19 @@ export default function Map() {
   zoom: 10,
 });
 
+console.log("After creating map");
 
+map.on("load", () => {
+  console.log("MAP LOAD EVENT");
+});
+map.on("style.load", () => {
+  console.log("STYLE LOAD EVENT");
+});
+
+map.on("error", (e) => {
+  console.error("MAP ERROR", e);
+});
+    
 
     if (map.isStyleLoaded()) {
   console.log("Style already loaded");

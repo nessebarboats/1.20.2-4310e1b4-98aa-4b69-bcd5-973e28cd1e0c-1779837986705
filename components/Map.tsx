@@ -28,6 +28,20 @@ map.on("load", () => {
 });*/
 
 
+
+
+
+
+    
+map.on("style.load", async () => {
+
+ const response = await fetch("/api/weather");
+  const data = await response.json();
+
+  console.log("Weather API:", data);
+
+  mapRef.current = map;
+
 map.addSource("stormglass", {
   type: "geojson",
   data: {
@@ -47,21 +61,11 @@ map.addSource("stormglass", {
   }
 });
 
-
-
-    
-map.on("style.load", async () => {
-
- const response = await fetch("/api/weather");
-  const data = await response.json();
-
-  console.log("Weather API:", data);
-
-  mapRef.current = map;
-  map.addSource("stormglass", {
+  
+/*  map.addSource("stormglass", {
     type: "geojson",
     data,
-  });
+  });*/
 
 /*  map.addLayer({
     id: "temperature",

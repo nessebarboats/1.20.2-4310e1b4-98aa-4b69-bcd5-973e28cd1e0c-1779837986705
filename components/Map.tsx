@@ -189,7 +189,7 @@ map.on("load", async () => {
     return () => map.remove();
   }, []);
 
-/*  return (
+  return (
     <div
       ref={mapContainer}
       style={{

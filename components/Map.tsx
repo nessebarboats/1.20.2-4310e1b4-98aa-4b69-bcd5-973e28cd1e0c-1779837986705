@@ -26,10 +26,10 @@ console.log("After creating map");
 map.on("load", () => {
   console.log("MAP LOAD EVENT");
 });*/
-map.on("style.load", () => {
+map.on("style.load", async () => {
 
  const response = await fetch("/api/weather");
-  const data = response.json();
+  const data = await response.json();
 
   console.log("Weather API:", data);
 

@@ -14,6 +14,43 @@ export default function Map() {
   useEffect(() => {
     if (!mapContainer.current) return;
 
+   const map = new mapboxgl.Map({
+  container: mapContainer.current!,
+  style: "mapbox://styles/mapbox/satellite-streets-v12",
+  center: [27.7437, 42.6598],
+  zoom: 10,
+});
+
+map.on("load", async () => {
+  console.log("Map loaded");
+
+  try {
+    const response = await fetch("/api/weather");
+
+    console.log("Status:", response.status);
+
+    const text = await response.text();
+
+    console.log("API response:", text);
+
+    const data = JSON.parse(text);
+
+    console.log("GeoJSON:", data);
+
+    map.addSource("stormglass", {
+      type: "geojson",
+      data,
+    });
+
+    console.log("Source added");
+  } catch (err) {
+    console.error("Weather error:", err);
+  }
+}); 
+    
+    
+    
+    /*
     const map = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/satellite-streets-v12",
@@ -33,7 +70,7 @@ export default function Map() {
     data,
   });
 });
-
+*/
 
   /*  
 

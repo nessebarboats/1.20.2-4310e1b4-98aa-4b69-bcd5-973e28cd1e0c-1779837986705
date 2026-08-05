@@ -26,6 +26,30 @@ console.log("After creating map");
 map.on("load", () => {
   console.log("MAP LOAD EVENT");
 });*/
+
+
+map.addSource("stormglass", {
+  type: "geojson",
+  data: {
+    type: "FeatureCollection",
+    features: [
+      {
+        type: "Feature",
+        geometry: {
+          type: "Point",
+          coordinates: [27.7437, 42.6598]
+        },
+        properties: {
+          temperature: 25
+        }
+      }
+    ]
+  }
+});
+
+
+
+    
 map.on("style.load", async () => {
 
  const response = await fetch("/api/weather");

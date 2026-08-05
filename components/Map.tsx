@@ -22,6 +22,30 @@ export default function Map() {
       
     });
 
+     map.on("load", async () => {
+  const response = await fetch("/api/weather");
+  const data = await response.json();
+
+  console.log("Weather API:", data);
+
+  map.addSource("stormglass", {
+    type: "geojson",
+    data,
+  });
+});
+
+new mapboxgl.on("load", async () => {
+  const response = await fetch("/api/weather");
+  const data = await response.json();
+
+  console.log("Weather API:", data);
+
+  new mapboxgl.addSource("stormglass", {
+    type: "geojson",
+    data,
+  });
+});
+    
 
     new mapboxgl.Marker()
       .setLngLat([27.7437, 42.6598])
@@ -131,7 +155,7 @@ mapRef.current = map;
     });
 
   });*/
-  mapRef.current = map;
+/*  mapRef.current = map;
     
 fetch("/api/weather")
   .then((res) => res.json())
@@ -145,7 +169,7 @@ fetch("/api/weather")
 map.addSource("stormglass", {
   type: "geojson",
   data: "/api/weather",
-});
+});*/
 /*    map.on("load", async () => {
   const response = await fetch("/api/weather");
   const data = await response.json();

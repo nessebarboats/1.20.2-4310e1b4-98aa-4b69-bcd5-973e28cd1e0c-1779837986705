@@ -17,7 +17,7 @@ export default function Map() {
 const map = new mapboxgl.Map({
   container: mapContainer.current!,
   //style: "mapbox://styles/mapbox/satellite-streets-v12",
-  style: "mapbox://styles/intibg1/cms4kp6x100wf01qz2v4sgdl8",
+  style: "mapbox://styles/intibg1/cms4l2i9u000e01sf30ng9m54",
   center: [27.7437, 42.6598],
   zoom: 10,
 });

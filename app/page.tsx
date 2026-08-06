@@ -58,6 +58,7 @@ type GetRows = {
   name: string;
 };
 import maplibregl from "maplibre-gl";
+
 export default function Home() {
 
  const [rows, setRows] = useState<GetRows[]>([]);
@@ -74,7 +75,7 @@ export default function Home() {
     }
 
     load();
-  }, []);
+  }, []); 
 
     
   

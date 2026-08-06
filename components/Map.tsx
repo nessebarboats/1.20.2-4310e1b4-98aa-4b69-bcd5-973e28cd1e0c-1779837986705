@@ -54,7 +54,7 @@ map.on("style.load", () => {
 
 
     
-map.on("load", async () => {
+map.on("style.load", async () => {
 
  const response = await fetch("/api/weather");
   const data = await response.json();

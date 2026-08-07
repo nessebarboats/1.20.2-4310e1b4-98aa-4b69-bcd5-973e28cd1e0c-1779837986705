@@ -61,7 +61,7 @@ import maplibregl from "maplibre-gl";
 
 export default function Home() {
 
- const [rows, setRows] = useState<GetRows[]>([]);
+ const [rows, setRows] = useState<GetRows[]>([]); 
   useEffect(() => {
     async function load() {
       const { data, error } = await supabase

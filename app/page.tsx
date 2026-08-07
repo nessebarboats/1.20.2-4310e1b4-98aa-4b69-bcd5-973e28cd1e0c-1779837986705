@@ -136,6 +136,12 @@ async function seed() {
         className="h-full w-full rounded-md object-cover"
       />
     </AspectRatio>
+
+
+<section className="w-full h-screen">
+  <WeatherMap />
+</section>
+      
  <main>
       <h1>Stormglass Map</h1>
       <Map />

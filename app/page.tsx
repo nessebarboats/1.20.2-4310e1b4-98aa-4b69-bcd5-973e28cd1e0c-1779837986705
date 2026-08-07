@@ -27,7 +27,7 @@ import { LandingPricingPlan } from '@/components/landing/pricing/LandingPricingP
 import MasonryGallery from "@/components/MasonryGallery";
 
 import { supabase } from "@/lib/supabase";
-import Image from "next/image"
+import Image from "next/image" 
 
 
 import { AspectRatio } from "@/components/shared/ui/aspect-ratio"

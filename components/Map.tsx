@@ -15,7 +15,7 @@ export default function WeatherMap() {
 
     const map = new Map({
       container: mapContainer.current,
-      style: `https://api.maptiler.com/maps/streets-v2/style.json?key=nYgctOP62wE84w5g1lpJ`,
+      style: `https://api.maptiler.com/maps/satellite-v4/tiles.json?key=nYgctOP62wE84w5g1lpJ`,
       center: [27.7437, 42.6600],
       zoom: 8,
     });
@@ -30,7 +30,7 @@ map.addControl(new NavigationControl());
     <div
       ref={mapContainer}
       style={{
-        width: "100%",
+        width: "1000px",
         height: "100vh",
       }}
     />

@@ -5,7 +5,6 @@ import { useEffect, useRef } from "react";
 import { Map, NavigationControl } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
-import { Map, NavigationControl } from "maplibre-gl";
 
 
 export default function WeatherMap() {

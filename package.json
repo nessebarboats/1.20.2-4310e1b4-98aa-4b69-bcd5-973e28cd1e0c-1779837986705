@@ -69,6 +69,7 @@
     "js-yaml": "^4.1.0",
     "lucide-react": "^0.475.0",
     "mapbox-gl": "^3.26.0",
+    "maplibre-gl": "^6.2.0",
     "mime-types": "^3.0.2",
     "next": "^15.5.9",
     "next-contentlayer2": "0.5.7",

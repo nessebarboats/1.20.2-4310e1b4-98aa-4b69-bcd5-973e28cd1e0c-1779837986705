@@ -24,7 +24,7 @@ import { useEffect, useState, useRef  } from "react";
 
 import { LandingPricingSection } from '@/components/landing/pricing/LandingPricingSection';
 import { LandingPricingPlan } from '@/components/landing/pricing/LandingPricingPlan';
-import MasonryGallery from "@/components/MasonryGallery";
+import MasonryGallery from "@/components/MasonryGallery"; 
 
 import { supabase } from "@/lib/supabase";
 import Image from "next/image" 

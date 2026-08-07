@@ -1,9 +1,10 @@
-
-
 "use client";
 
 import { useEffect, useRef } from "react";
 import { Map } from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
+
+import { Map, NavigationControl } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 export default function WeatherMap() {
@@ -18,8 +19,9 @@ export default function WeatherMap() {
       center: [27.7437, 42.6600],
       zoom: 8,
     });
+map.addControl(new NavigationControl());
 
-    map.addControl(new maplibregl.NavigationControl());
+   // map.addControl(new maplibregl.NavigationControl());
 
     return () => map.remove();
   }, []);
@@ -34,6 +36,9 @@ export default function WeatherMap() {
     />
   );
 }
+
+
+
 
 /*"use client";
 

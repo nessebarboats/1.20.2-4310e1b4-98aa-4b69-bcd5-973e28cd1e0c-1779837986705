@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Map } from "maplibre-gl";
+//import { Map } from "maplibre-gl";
+import { Map, NavigationControl } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import { Map, NavigationControl } from "maplibre-gl";
-import "maplibre-gl/dist/maplibre-gl.css";
+
 
 export default function WeatherMap() {
   const mapContainer = useRef<HTMLDivElement>(null);

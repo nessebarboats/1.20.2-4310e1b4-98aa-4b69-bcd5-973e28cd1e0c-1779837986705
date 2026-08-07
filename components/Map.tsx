@@ -1,12 +1,49 @@
+
+
 "use client";
+
+import { useEffect, useRef } from "react";
+import { Map } from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
+
+export default function WeatherMap() {
+  const mapContainer = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!mapContainer.current) return;
+
+    const map = new Map({
+      container: mapContainer.current,
+      style: `https://api.maptiler.com/maps/streets-v2/style.json?key=nYgctOP62wE84w5g1lpJ`,
+      center: [27.7437, 42.6600],
+      zoom: 8,
+    });
+
+    map.addControl(new maplibregl.NavigationControl());
+
+    return () => map.remove();
+  }, []);
+
+  return (
+    <div
+      ref={mapContainer}
+      style={{
+        width: "100%",
+        height: "100vh",
+      }}
+    />
+  );
+}
+
+/*"use client";
 
 import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-
+*/
 /*mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;*/
-mapboxgl.accessToken = "pk.eyJ1IjoiaW50aWJnMSIsImEiOiJjbXJtYnp1MXEwMG90MndxeWNvczFjNWl3In0.Cu8z8cIJPYkvqDMRPyCTKQ";
-
+//mapboxgl.accessToken = "pk.eyJ1IjoiaW50aWJnMSIsImEiOiJjbXJtYnp1MXEwMG90MndxeWNvczFjNWl3In0.Cu8z8cIJPYkvqDMRPyCTKQ";
+/*
 export default function Map() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
@@ -20,7 +57,7 @@ const map = new mapboxgl.Map({
   style: "mapbox://styles/intibg1/cms4kp6x100wf01qz2v4sgdl8",
   center: [27.7437, 42.6598],
   zoom: 10,
-});
+});*/
 /*
 console.log("After creating map");
 
@@ -52,7 +89,7 @@ map.on("style.load", () => {
 
 
 
-
+/*
     
 map.on("style.load", async () => {
 
@@ -104,7 +141,7 @@ map.addSource("stormglass", {
       ]
     }
   });*/
-console.log(map.getSource("stormglass"));
+/*console.log(map.getSource("stormglass"));
     map.addLayer({
   id: "temperature",
   type: "circle",
@@ -127,7 +164,7 @@ console.log(map.getSource("stormglass"));
 map.on("error", (e) => {
   console.error("MAP ERROR", e);
 });
-    
+    */
 
   
     /*
@@ -342,7 +379,7 @@ map.on("load", async () => {
   });
 });*/
 
-    return () => map.remove();
+  /*  return () => map.remove();
   }, []);
 
   return (
@@ -362,7 +399,7 @@ map.on("load", async () => {
 
   }
   
-
+*/
 
 
 

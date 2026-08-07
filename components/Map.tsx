@@ -15,7 +15,7 @@ export default function WeatherMap() {
 
     const map = new Map({
       container: mapContainer.current,
-      style: `https://api.maptiler.com/maps/satellite-v4/tiles.json?key=nYgctOP62wE84w5g1lpJ`,
+      style: "https://api.maptiler.com/maps/topo-v4/style.json?key=nYgctOP62wE84w5g1lpJ",
       center: [27.7437, 42.6600],
       zoom: 8,
     });

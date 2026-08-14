@@ -508,7 +508,7 @@ export default function MapboxMap({
       paint: { 'raster-opacity': 0.7 },
       layout: { visibility: tempVisible ? 'visible' : 'none' },
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [styleLoaded]);
 
   // Toggle temperature layer visibility

@@ -29,7 +29,7 @@ import MasonryGallery from "@/components/MasonryGallery";
 import { supabase } from "@/lib/supabase";
 import Image from "next/image" 
 
-import MapboxMap, { MapMarker } from './MapboxMap';
+import MapboxMap, { MapMarker } from '@/components/MapboxMap';
 
 
 const locations: MapMarker[] = [

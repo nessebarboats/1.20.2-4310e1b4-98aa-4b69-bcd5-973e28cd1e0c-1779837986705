@@ -68,7 +68,7 @@ export default function MapboxMap({
       mapRef.current?.remove();
       mapRef.current = null;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, []);
 
   // Add the temperature raster source/layer once the style has loaded

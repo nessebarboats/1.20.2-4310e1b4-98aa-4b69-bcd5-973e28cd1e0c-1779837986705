@@ -37,8 +37,10 @@ import UpdateStormglassButton from "@/components/UpdateStormglassButton";
    //   <h1>Stormglass Map</h1>
    //   <Map />
  //   </main>
-
-import WeatherMap from "@/components/Map";
+//<section className="w-full h-screen">
+//  <WeatherMap />
+//</section>
+//import WeatherMap from "@/components/Map";
 import {
   ChromeIcon,
   FigmaIcon,
@@ -144,9 +146,7 @@ async function seed() {
     </AspectRatio>
 
 
-<section className="w-full h-screen">
-  <WeatherMap />
-</section>
+
       
 
 <LandingFeatureList

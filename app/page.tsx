@@ -29,6 +29,15 @@ import MasonryGallery from "@/components/MasonryGallery";
 import { supabase } from "@/lib/supabase";
 import Image from "next/image" 
 
+import MapboxMap, { MapMarker } from './MapboxMap';
+
+
+const locations: MapMarker[] = [
+  { id: 1, longitude: -122.4194, latitude: 37.7749, label: 'San Francisco HQ' },
+  { id: 2, longitude: -74.006, latitude: 40.7128, label: 'New York Office' },
+  { id: 3, longitude: -0.1276, latitude: 51.5074, label: 'London Office' },
+];
+
 
 import { AspectRatio } from "@/components/shared/ui/aspect-ratio"
 import UpdateStormglassButton from "@/components/UpdateStormglassButton";
@@ -193,7 +202,10 @@ async function seed() {
   }}
 >
 
-        
+        <main style={{ padding: 24 }}>
+      <h1>Our Locations</h1>
+      <MapboxMap markers={locations} zoom={2} height={500} />
+    </main>
 <LandingProductFeature
         title="Customized Boat Tours"
         descriptionComponent={

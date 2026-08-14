@@ -57,7 +57,7 @@ export default function MapboxMap({
     mapRef.current = new mapboxgl.Map({
       container: containerRef.current,
       style,
-      center: defaultCenter,
+      center: defaultCenter, 
       zoom,
     });
 

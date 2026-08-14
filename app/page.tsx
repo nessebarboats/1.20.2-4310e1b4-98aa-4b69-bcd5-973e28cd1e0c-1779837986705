@@ -32,7 +32,12 @@ import Image from "next/image"
 
 import { AspectRatio } from "@/components/shared/ui/aspect-ratio"
 import UpdateStormglassButton from "@/components/UpdateStormglassButton";
-import Map from "@/components/Map";
+//import Map from "@/components/Map";
+// <main>
+   //   <h1>Stormglass Map</h1>
+   //   <Map />
+ //   </main>
+
 import WeatherMap from "@/components/Map";
 import {
   ChromeIcon,

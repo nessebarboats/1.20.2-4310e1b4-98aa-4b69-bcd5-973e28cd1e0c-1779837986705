@@ -31,12 +31,7 @@ import Image from "next/image"
 
 import MapboxMap, { MapMarker } from '@/components/MapboxMap';
 
-interface MapMarker {
-  id: number;
-  longitude: number;
-  latitude: number;
-  label: string;
-}
+
 
 const locations: MapMarker[] = [
   { id: 1, longitude: 122.4194, latitude: 37.7749, label: 'San Francisco HQ' },

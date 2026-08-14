@@ -30,9 +30,9 @@ import { supabase } from "@/lib/supabase";
 import Image from "next/image" 
 
 import MapboxMap, { MapMarker } from '@/components/MapboxMap';
+const locations: { id: number } = { size: 225 };
 
-
-const locations: MapMarker[] = [
+locations: MapMarker[] = [
   { id: 1, longitude: -122.4194, latitude: 37.7749, label: 'San Francisco HQ' },
   { id: 2, longitude: -74.006, latitude: 40.7128, label: 'New York Office' },
   { id: 3, longitude: -0.1276, latitude: 51.5074, label: 'London Office' },

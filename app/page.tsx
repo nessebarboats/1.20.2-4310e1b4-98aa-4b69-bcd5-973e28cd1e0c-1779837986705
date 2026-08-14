@@ -143,10 +143,7 @@ async function seed() {
   <WeatherMap />
 </section>
       
- <main>
-      <h1>Stormglass Map</h1>
-      <Map />
-    </main>
+
 <LandingFeatureList
         title="Awesome Features Await!"
         description="Unforgettable Sea Journeys"

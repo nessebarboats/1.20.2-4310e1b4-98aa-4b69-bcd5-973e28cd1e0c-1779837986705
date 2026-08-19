@@ -47,6 +47,7 @@ export default function MapboxMap({
   height = 480,
   showTemperature = false,
   temperatureToggle = true,
+  projection: 'globe'
 }: MapboxMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);

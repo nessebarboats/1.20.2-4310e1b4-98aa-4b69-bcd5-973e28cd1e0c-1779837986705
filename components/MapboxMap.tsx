@@ -15,6 +15,7 @@ export interface MapMarker {
 }
 
 interface WindPoint {
+  name?: string;
   lngLat: [number, number];
   direction: number; // degrees, 0 = North, meteorological convention
   speed: number;      // mph or your preferred unit

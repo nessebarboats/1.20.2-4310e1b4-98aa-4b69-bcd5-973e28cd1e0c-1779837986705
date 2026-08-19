@@ -21,12 +21,12 @@ export interface MapMarker {
   label?: "LABEL";      // shown in the popup
   color?: "#0ea5e9";       // marker color, e.g. "#0ea5e9"
 }*/
-
+type MapboxStyle = 'mapbox://styles/mapbox/streets-v12';
 interface MapboxMapProps {
   markers: MapMarker[];
   center?: [42.659820, 27.743707]; // [lng, lat]
   zoom?: number;
-  style?: "mapbox://styles/mapbox/satellite-streets-v12"; // mapbox style url
+  style?: MapboxStyle;// mapbox style url
   height?: number;
   /** Show the temperature overlay on initial render */
   showTemperature?: true;
@@ -36,6 +36,8 @@ interface MapboxMapProps {
 
 const TEMP_SOURCE_ID = 'owm-temperature-source';
 const TEMP_LAYER_ID = 'owm-temperature-layer';
+
+
 
 export default function MapboxMap({
   markers,

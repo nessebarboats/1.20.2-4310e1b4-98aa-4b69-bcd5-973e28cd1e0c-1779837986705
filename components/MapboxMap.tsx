@@ -6,13 +6,13 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 // Set your Mapbox access token via env var (see setup notes)
 mapboxgl.accessToken = "pk.eyJ1IjoiaW50aWJnMSIsImEiOiJjbXJtYnp1MXEwMG90MndxeWNvczFjNWl3In0.Cu8z8cIJPYkvqDMRPyCTKQ";
-/*
 export interface MapMarker {
   id: number;
-  longitude: number;
-  latitude: number;
-  label: string;
-}*/
+  longitude: number;   
+  latitude: number;   
+  label?: string;
+  color?: string;
+}
 
 export interface MapMarker {
   id: 1;

@@ -14,13 +14,13 @@ export interface MapMarker {
   color?: string;
 }
 
-export interface MapMarker {
+/*export interface MapMarker {
   id: 1;
   longitude: 42.659820;
   latitude: 27.743707;
   label?: "LABEL";      // shown in the popup
   color?: "#0ea5e9";       // marker color, e.g. "#0ea5e9"
-}
+}*/
 
 interface MapboxMapProps {
   markers: MapMarker[];

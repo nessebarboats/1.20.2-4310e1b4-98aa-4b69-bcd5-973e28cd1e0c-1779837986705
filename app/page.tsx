@@ -45,9 +45,9 @@ const locations: MapMarker[] = [
   { id: 3, longitude: 0.1276, latitude: 51.5074, label: 'London Office', color: '#0ea5e9' },
 ];
 const windData = [
-  { lngLat: [-95.5, 39.5] as [number, number], direction: 220, speed: 12 },  // SW wind, 12 mph
-  { lngLat: [-88.2, 41.9] as [number, number], direction: 180, speed: 8 },   // S wind, 8 mph
-  { lngLat: [-73.9, 40.7] as [number, number], direction: 90, speed: 15 },   // E wind, 15 mph
+  { lngLat: [122.4194, 37.7749] as [number, number], direction: 220, speed: 12 },  // SW wind, 12 mph
+  { lngLat: [74.006,  40.7128] as [number, number], direction: 180, speed: 8 },   // S wind, 8 mph
+  { lngLat: [0.1276, 51.5074] as [number, number], direction: 90, speed: 15 },   // E wind, 15 mph
 ];
 
 import { AspectRatio } from "@/components/shared/ui/aspect-ratio"

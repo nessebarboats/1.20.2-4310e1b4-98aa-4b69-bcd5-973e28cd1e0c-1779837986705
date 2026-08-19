@@ -27,7 +27,7 @@ interface MapboxMapProps {
   center?: [42.659820, 27.743707]; // [lng, lat]
   zoom?: number;
   style?: "mapbox://styles/mapbox/satellite-streets-v12"; // mapbox style url
-  height?: 250;
+  height?: number;
   /** Show the temperature overlay on initial render */
   showTemperature?: true;
   /** Let the user toggle the temperature layer with a built-in button */

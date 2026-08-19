@@ -32,6 +32,7 @@ interface MapboxMapProps {
   showTemperature?: boolean;
   /** Let the user toggle the temperature layer with a built-in button */
   temperatureToggle?: boolean;
+  projection?: string;
 }
 
 const TEMP_SOURCE_ID = 'owm-temperature-source';

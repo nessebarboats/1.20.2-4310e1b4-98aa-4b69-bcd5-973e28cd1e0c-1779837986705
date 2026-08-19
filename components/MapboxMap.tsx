@@ -161,6 +161,33 @@ export default function MapboxMap({
     }
   }, [markers]);
 
+useEffect(() => {
+  if (!mapRef.current || !showWind) return;
+
+  const markers: mapboxgl.Marker[] = [];
+
+  windData.forEach(({ lngLat, direction, speed }) => {
+    const el = document.createElement('div');
+    el.style.width = '24px';
+    el.style.height = '24px';
+    el.style.transform = `rotate(${direction}deg)`;
+    el.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="#2563eb">
+        <path d="M12 2L4 20l8-4 8 4z"/>
+      </svg>
+    `;
+    el.title = `${speed} mph`;
+
+    const marker = new mapboxgl.Marker({ element: el })
+      .setLngLat(lngLat)
+      .addTo(mapRef.current!);
+
+    markers.push(marker);
+  });
+
+  return () => markers.forEach((m) => m.remove());
+}, [showWind, windData]);
+  
   return (
     <div style={{ position: 'relative', width: '100%', height }}>
       <div

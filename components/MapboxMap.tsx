@@ -44,7 +44,7 @@ export default function MapboxMap({
   markers,
   center,
   zoom = 3,
-  style = 'mapbox://styles/mapbox/streets-v12',
+  style = 'mapbox://styles/mapbox/satellite-v9',
   height = 480,
   showTemperature = false,
   temperatureToggle = true,

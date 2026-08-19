@@ -55,7 +55,7 @@ export default function MapboxMap({
   showTemperature = false,
   temperatureToggle = true,
   projection = 'globe',
-  showWind = false,
+  showWind = true,
   windToggle = true,
   windData = [],
 }: MapboxMapProps) {

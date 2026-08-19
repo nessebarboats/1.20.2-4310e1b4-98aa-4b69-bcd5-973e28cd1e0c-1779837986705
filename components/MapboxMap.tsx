@@ -25,7 +25,7 @@ export interface MapMarker {
 interface MapboxMapProps {
   markers: MapMarker[];
   center?: [42.659820, 27.743707]; // [lng, lat]
-  zoom?: 5;
+  zoom?: number;
   style?: "mapbox://styles/mapbox/satellite-streets-v12"; // mapbox style url
   height?: 250;
   /** Show the temperature overlay on initial render */

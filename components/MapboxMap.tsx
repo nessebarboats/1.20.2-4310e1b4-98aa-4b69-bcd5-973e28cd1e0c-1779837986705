@@ -14,13 +14,12 @@ export interface MapMarker {
   color?: string;
 }
 
-/*export interface MapMarker {
-  id: 1;
-  longitude: 42.659820;
-  latitude: 27.743707;
-  label?: "LABEL";      // shown in the popup
-  color?: "#0ea5e9";       // marker color, e.g. "#0ea5e9"
-}*/
+interface WindPoint {
+  lngLat: [number, number];
+  direction: number; // degrees, 0 = North, meteorological convention
+  speed: number;      // mph or your preferred unit
+}
+
 type MapboxStyle = 'mapbox://styles/mapbox/satellite-v9';
 interface MapboxMapProps {
   markers: MapMarker[];
@@ -33,7 +32,14 @@ interface MapboxMapProps {
   /** Let the user toggle the temperature layer with a built-in button */
   temperatureToggle?: boolean;
   projection?: string;
+
+  // Wind layer additions
+  showWind?: boolean;              // whether wind layer is visible by default
+  windToggle?: boolean;            // whether to show a UI toggle button for wind
+  windData?: WindPoint[];          // per-location wind data
 }
+
+
 
 const TEMP_SOURCE_ID = 'owm-temperature-source';
 const TEMP_LAYER_ID = 'owm-temperature-layer';

@@ -21,7 +21,7 @@ export interface MapMarker {
   label?: "LABEL";      // shown in the popup
   color?: "#0ea5e9";       // marker color, e.g. "#0ea5e9"
 }*/
-type MapboxStyle = 'mapbox://styles/mapbox/streets-v12';
+type MapboxStyle = 'mapbox://styles/mapbox/satellite-streets-v12';
 interface MapboxMapProps {
   markers: MapMarker[];
   center?: [42.659820, 27.743707]; // [lng, lat]

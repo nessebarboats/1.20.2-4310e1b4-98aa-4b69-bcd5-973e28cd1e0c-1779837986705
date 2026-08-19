@@ -29,9 +29,9 @@ interface MapboxMapProps {
   style?: MapboxStyle;// mapbox style url
   height?: number;
   /** Show the temperature overlay on initial render */
-  showTemperature?: true;
+  showTemperature?: boolean;
   /** Let the user toggle the temperature layer with a built-in button */
-  temperatureToggle?: true;
+  temperatureToggle?: boolean;
 }
 
 const TEMP_SOURCE_ID = 'owm-temperature-source';

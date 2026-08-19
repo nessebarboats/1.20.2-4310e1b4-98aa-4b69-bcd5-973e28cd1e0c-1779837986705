@@ -215,7 +215,9 @@ async function seed() {
 
         <main style={{ padding: 24 }}>
       <h1>Our Locations</h1>
-      <MapboxMap markers={locations} zoom={2} height={500} />
+      <MapboxMap markers={locations} zoom={2} height={500} showWind={true}
+        windToggle={true}
+        windData={windData}/>
     </main>
 <LandingProductFeature
         title="Customized Boat Tours"

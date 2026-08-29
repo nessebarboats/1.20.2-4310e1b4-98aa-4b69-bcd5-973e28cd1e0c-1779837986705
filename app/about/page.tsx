@@ -12,16 +12,19 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // 1. Set your Mapbox access token here (better: use an env var, e.g. process.env.NEXT_PUBLIC_MAPBOX_TOKEN)
 mapboxgl.accessToken = 'pk.eyJ1IjoiaW50aWJnMSIsImEiOiJjbXJtYnp1MXEwMG90MndxeWNvczFjNWl3In0.Cu8z8cIJPYkvqDMRPyCTKQ';
 
-const INITIAL_CENTER: [number, number] = [23.3219, 42.6977]; // [lng, lat] — Sofia, Bulgaria
+const INITIAL_CENTER: [number, number] = [27.743707, 42.659820]; // [lng, lat] — Sofia, Bulgaria
 const INITIAL_ZOOM = 14;
 const INITIAL_PITCH = 60;
 const INITIAL_BEARING = -20;
 
 // Add/remove pins here — each needs coordinates, a title, and optional description
 const LOCATIONS: { coords: [number, number]; title: string; description?: string }[] = [
-  { coords: [23.3219, 42.6977], title: 'nessebarboats HQ', description: 'Main office' },
-  { coords: [23.3300, 42.7050], title: 'Marina dock A', description: 'Boat pickup point' },
-  { coords: [23.3150, 42.6900], title: 'Marina dock B', description: 'Boat pickup point' },
+  { coords: [27.743707, 42.659820], title: 'nessebarboats HQ', description: 'Main office' },
+  { coords: [27.692293, 42.649218], title: 'Marina dock A', description: 'Boat pickup point' },
+  { coords: [27.912160, 42.697375], title: 'Marina dock B', description: 'Boat pickup point' },
+  { coords: [27.811908, 42.701778], title: 'Marina dock B', description: 'Boat pickup point' },
+  { coords: [27.747968, 42.707671], title: 'Marina dock B', description: 'Boat pickup point' },
+  { coords: [27.716937, 42.693605], title: 'Marina dock B', description: 'Boat pickup point' },
 ];
 
 // NOTE: no "export default" here — this is a local component used only within this file.

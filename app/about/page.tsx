@@ -1,7 +1,7 @@
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
 
-/*****/
+
 import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -167,7 +167,7 @@ export default function Mapbox3DTerrain() {
 }
 
 
-/*****/
+
 
 export default function About() {
   return (

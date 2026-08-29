@@ -244,7 +244,7 @@ function Mapbox3DTerrain() {
   }, [pitch]);
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '500px' }}>
+    <div style={{ position: 'absolute', width: '100%', height: '500px' }}>
       <div
         style={{
           position: 'absolute',

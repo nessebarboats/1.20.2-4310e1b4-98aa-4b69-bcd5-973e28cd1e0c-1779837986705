@@ -24,23 +24,33 @@ const LOCATIONS: { coords: [number, number]; title: string; description?: string
   { coords: [23.3150, 42.6900], title: 'Marina dock B', description: 'Boat pickup point' },
 ];
 
-type WindData = { speedKn: number; directionDeg: number };
+type WeatherData = { speedKn: number; directionDeg: number; tempC: number };
 
-// Fetches current wind speed (knots) + direction (degrees) for a coordinate.
-// Open-Meteo is free and requires no API key.
-async function fetchWind(lng: number, lat: number): Promise<WindData | null> {
+// Fetches current wind speed (knots), wind direction (degrees), and temperature (°C)
+// for a coordinate. Open-Meteo is free and requires no API key.
+async function fetchWeather(lng: number, lat: number): Promise<WeatherData | null> {
   try {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=wind_speed_10m,wind_direction_10m&wind_speed_unit=kn`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,wind_speed_10m,wind_direction_10m&wind_speed_unit=kn`;
     const res = await fetch(url);
     if (!res.ok) return null;
     const data = await res.json();
     return {
+      tempC: data.current.temperature_2m,
       speedKn: data.current.wind_speed_10m,
       directionDeg: data.current.wind_direction_10m,
     };
   } catch {
     return null;
   }
+}
+
+// Returns a color for a temperature badge — blue (cold) through red (hot).
+function tempColor(tempC: number): string {
+  if (tempC <= 0) return '#3b82f6';
+  if (tempC <= 10) return '#60a5fa';
+  if (tempC <= 20) return '#facc15';
+  if (tempC <= 28) return '#fb923c';
+  return '#ef4444';
 }
 
 // Converts a compass degree reading into an 8-point direction label (e.g. "NE").
@@ -91,8 +101,30 @@ function Mapbox3DTerrain() {
           el.style.boxShadow = '0 2px 6px rgba(0,0,0,0.4)';
           el.style.cursor = 'pointer';
 
+          // Small temperature badge, updated once weather data arrives
+          const tempBadge = document.createElement('div');
+          tempBadge.style.position = 'absolute';
+          tempBadge.style.top = '-8px';
+          tempBadge.style.right = '-8px';
+          tempBadge.style.minWidth = '28px';
+          tempBadge.style.height = '18px';
+          tempBadge.style.padding = '0 4px';
+          tempBadge.style.borderRadius = '9px';
+          tempBadge.style.background = '#9ca3af';
+          tempBadge.style.border = '2px solid #ffffff';
+          tempBadge.style.color = '#fff';
+          tempBadge.style.fontSize = '10px';
+          tempBadge.style.fontWeight = '700';
+          tempBadge.style.display = 'flex';
+          tempBadge.style.alignItems = 'center';
+          tempBadge.style.justifyContent = 'center';
+          tempBadge.style.fontFamily = 'system-ui, sans-serif';
+          tempBadge.textContent = '…';
+          el.style.position = 'relative';
+          el.appendChild(tempBadge);
+
           const popup = new mapboxgl.Popup({ offset: 18 }).setHTML(
-            `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}<br/><em>Loading wind…</em>`
+            `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}<br/><em>Loading weather…</em>`
           );
 
           new mapboxgl.Marker({ element: el, anchor: 'center' })
@@ -104,13 +136,22 @@ function Mapbox3DTerrain() {
 
           bounds.extend(loc.coords);
 
-          fetchWind(loc.coords[0], loc.coords[1]).then((wind) => {
-            const windHtml = wind
-              ? `<div style="margin-top:4px;">💨 ${wind.speedKn.toFixed(1)} kn from ${degToCompass(wind.directionDeg)}</div>`
-              : `<div style="margin-top:4px; color:#888;">Wind data unavailable</div>`;
-            popup.setHTML(
-              `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}${windHtml}`
-            );
+          fetchWeather(loc.coords[0], loc.coords[1]).then((weather) => {
+            if (weather) {
+              tempBadge.textContent = `${Math.round(weather.tempC)}°`;
+              tempBadge.style.background = tempColor(weather.tempC);
+
+              popup.setHTML(
+                `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}
+                 <div style="margin-top:4px;">🌡️ ${weather.tempC.toFixed(1)}°C</div>
+                 <div style="margin-top:2px;">💨 ${weather.speedKn.toFixed(1)} kn from ${degToCompass(weather.directionDeg)}</div>`
+              );
+            } else {
+              tempBadge.textContent = '?';
+              popup.setHTML(
+                `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}<br/><span style="color:#888;">Weather data unavailable</span>`
+              );
+            }
           });
         });
 

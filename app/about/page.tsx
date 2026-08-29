@@ -76,102 +76,109 @@ function Mapbox3DTerrain() {
     map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), 'top-right');
 
     map.on('load', () => {
-      // 2. Add DEM (elevation) source for terrain
-      map.addSource('mapbox-dem', {
-        type: 'raster-dem',
-        url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
-        tileSize: 512,
-        maxzoom: 14,
-      });
+      // 1. Add pin markers + wind data FIRST, wrapped in try/catch, so this always
+      // runs even if the terrain/building code below has an issue.
+      try {
+        const bounds = new mapboxgl.LngLatBounds();
 
-      // 3. Enable 3D terrain
-      map.setTerrain({ source: 'mapbox-dem', exaggeration });
+        LOCATIONS.forEach((loc) => {
+          const el = document.createElement('div');
+          el.style.width = '22px';
+          el.style.height = '22px';
+          el.style.borderRadius = '50%';
+          el.style.background = '#e63946';
+          el.style.border = '3px solid #ffffff';
+          el.style.boxShadow = '0 2px 6px rgba(0,0,0,0.4)';
+          el.style.cursor = 'pointer';
 
-      // 4. Sky layer for a realistic horizon
-      map.addLayer({
-        id: 'sky',
-        type: 'sky',
-        paint: {
-          'sky-type': 'atmosphere',
-          'sky-atmosphere-sun': [0.0, 90.0],
-          'sky-atmosphere-sun-intensity': 15,
-        },
-      });
-
-      // 5. 3D building extrusions
-      const layers = map.getStyle().layers;
-      const labelLayerId = layers?.find(
-        (l): l is mapboxgl.SymbolLayerSpecification =>
-          l.type === 'symbol' && !!l.layout && 'text-field' in l.layout
-      )?.id;
-
-      map.addLayer(
-        {
-          id: '3d-buildings',
-          source: 'composite',
-          'source-layer': 'building',
-          filter: ['==', 'extrude', 'true'],
-          type: 'fill-extrusion',
-          minzoom: 14,
-          paint: {
-            'fill-extrusion-color': '#d9d0c1',
-            'fill-extrusion-height': ['get', 'height'],
-            'fill-extrusion-base': ['get', 'min_height'],
-            'fill-extrusion-opacity': 0.85,
-          },
-        },
-        labelLayerId
-      );
-
-      // 6. Add pin markers for every location, and track them so we can fit bounds
-      const bounds = new mapboxgl.LngLatBounds();
-
-      LOCATIONS.forEach((loc) => {
-        // Custom marker element (instead of the default SVG icon) so it can't be
-        // silently hidden by a global CSS reset targeting <svg> elements.
-        const el = document.createElement('div');
-        el.style.width = '22px';
-        el.style.height = '22px';
-        el.style.borderRadius = '50% 50% 50% 0';
-        el.style.background = '#e63946';
-        el.style.border = '3px solid #ffffff';
-        el.style.boxShadow = '0 2px 6px rgba(0,0,0,0.4)';
-        el.style.transform = 'rotate(-45deg)';
-        el.style.cursor = 'pointer';
-
-        const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-          `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}<br/><em>Loading wind…</em>`
-        );
-
-        new mapboxgl.Marker({ element: el, anchor: 'bottom' })
-          .setLngLat(loc.coords)
-          .setPopup(popup)
-          .addTo(map);
-
-        bounds.extend(loc.coords);
-
-        // 6a. Fetch live wind data for this point and update its popup once it arrives
-        fetchWind(loc.coords[0], loc.coords[1]).then((wind) => {
-          const windHtml = wind
-            ? `<div style="margin-top:4px;">
-                 💨 ${wind.speedKn.toFixed(1)} kn from ${degToCompass(wind.directionDeg)}
-                 <span style="display:inline-block; transform: rotate(${wind.directionDeg}deg); margin-left:4px;">↓</span>
-               </div>`
-            : `<div style="margin-top:4px; color:#888;">Wind data unavailable</div>`;
-
-          popup.setHTML(
-            `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}${windHtml}`
+          const popup = new mapboxgl.Popup({ offset: 18 }).setHTML(
+            `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}<br/><em>Loading wind…</em>`
           );
-        });
-      });
 
-      // 7. Fit the camera so every pin is visible, then ease into the pitched 3D view
-      if (!bounds.isEmpty()) {
-        map.fitBounds(bounds, { padding: 80, duration: 0 });
-        map.once('idle', () => {
-          map.easeTo({ pitch: INITIAL_PITCH, duration: 800 });
-          setPitch(INITIAL_PITCH);
+          new mapboxgl.Marker({ element: el, anchor: 'center' })
+            .setLngLat(loc.coords)
+            .setPopup(popup)
+            .addTo(map);
+
+          console.log('Marker added:', loc.title, loc.coords);
+
+          bounds.extend(loc.coords);
+
+          fetchWind(loc.coords[0], loc.coords[1]).then((wind) => {
+            const windHtml = wind
+              ? `<div style="margin-top:4px;">💨 ${wind.speedKn.toFixed(1)} kn from ${degToCompass(wind.directionDeg)}</div>`
+              : `<div style="margin-top:4px; color:#888;">Wind data unavailable</div>`;
+            popup.setHTML(
+              `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}${windHtml}`
+            );
+          });
         });
+
+        if (!bounds.isEmpty()) {
+          map.fitBounds(bounds, { padding: 80, duration: 0 });
+          map.once('idle', () => {
+            map.easeTo({ pitch: INITIAL_PITCH, duration: 800 });
+            setPitch(INITIAL_PITCH);
+          });
+        }
+      } catch (err) {
+        console.error('Error adding markers:', err);
+      }
+
+      // 2. Terrain, sky, and buildings — each independently wrapped so a failure
+      // here can never block the markers above.
+      try {
+        map.addSource('mapbox-dem', {
+          type: 'raster-dem',
+          url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          tileSize: 512,
+          maxzoom: 14,
+        });
+        map.setTerrain({ source: 'mapbox-dem', exaggeration });
+      } catch (err) {
+        console.error('Error adding terrain:', err);
+      }
+
+      try {
+        map.addLayer({
+          id: 'sky',
+          type: 'sky',
+          paint: {
+            'sky-type': 'atmosphere',
+            'sky-atmosphere-sun': [0.0, 90.0],
+            'sky-atmosphere-sun-intensity': 15,
+          },
+        });
+      } catch (err) {
+        console.error('Error adding sky layer:', err);
+      }
+
+      try {
+        const layers = map.getStyle().layers;
+        const labelLayerId = layers?.find(
+          (l): l is mapboxgl.SymbolLayerSpecification =>
+            l.type === 'symbol' && !!l.layout && 'text-field' in l.layout
+        )?.id;
+
+        map.addLayer(
+          {
+            id: '3d-buildings',
+            source: 'composite',
+            'source-layer': 'building',
+            filter: ['==', 'extrude', 'true'],
+            type: 'fill-extrusion',
+            minzoom: 14,
+            paint: {
+              'fill-extrusion-color': '#d9d0c1',
+              'fill-extrusion-height': ['get', 'height'],
+              'fill-extrusion-base': ['get', 'min_height'],
+              'fill-extrusion-opacity': 0.85,
+            },
+          },
+          labelLayerId
+        );
+      } catch (err) {
+        console.error('Error adding 3D buildings:', err);
       }
     });
 

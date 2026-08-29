@@ -120,7 +120,6 @@ function Mapbox3DTerrain() {
           tempBadge.style.justifyContent = 'center';
           tempBadge.style.fontFamily = 'system-ui, sans-serif';
           tempBadge.textContent = '…';
-          el.style.position = 'relative';
           el.appendChild(tempBadge);
 
           const popup = new mapboxgl.Popup({ offset: 18 }).setHTML(
@@ -244,7 +243,7 @@ function Mapbox3DTerrain() {
   }, [pitch]);
 
   return (
-    <div style={{ position: 'absolute', width: '100%', height: '500px' }}>
+    <div style={{ position: 'relative', width: '100%', height: '500px' }}>
       <div
         style={{
           position: 'absolute',

@@ -10,12 +10,19 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // npm install -D @types/mapbox-gl
 
 // 1. Set your Mapbox access token here (better: use an env var, e.g. process.env.NEXT_PUBLIC_MAPBOX_TOKEN)
-mapboxgl.accessToken = 'pk.eyJ1IjoiaW50aWJnMSIsImEiOiJjbXJtYnp1MXEwMG90MndxeWNvczFjNWl3In0.Cu8z8cIJPYkvqDMRPyCTKQ';
+mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
 
-const INITIAL_CENTER: [number, number] = [27.74370, 42.65982]; // [lng, lat] — Sofia, Bulgaria
-const INITIAL_ZOOM = 20;
+const INITIAL_CENTER: [number, number] = [23.3219, 42.6977]; // [lng, lat] — Sofia, Bulgaria
+const INITIAL_ZOOM = 14;
 const INITIAL_PITCH = 60;
 const INITIAL_BEARING = -20;
+
+// Add/remove pins here — each needs coordinates, a title, and optional description
+const LOCATIONS: { coords: [number, number]; title: string; description?: string }[] = [
+  { coords: [23.3219, 42.6977], title: 'nessebarboats HQ', description: 'Main office' },
+  { coords: [23.3300, 42.7050], title: 'Marina dock A', description: 'Boat pickup point' },
+  { coords: [23.3150, 42.6900], title: 'Marina dock B', description: 'Boat pickup point' },
+];
 
 // NOTE: no "export default" here — this is a local component used only within this file.
 function Mapbox3DTerrain() {
@@ -90,6 +97,18 @@ function Mapbox3DTerrain() {
         },
         labelLayerId
       );
+
+      // 6. Add pin markers for every location
+      LOCATIONS.forEach((loc) => {
+        new mapboxgl.Marker({ color: '#e63946' })
+          .setLngLat(loc.coords)
+          .setPopup(
+            new mapboxgl.Popup({ offset: 25 }).setHTML(
+              `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}`
+            )
+          )
+          .addTo(map);
+      });
     });
 
     return () => {

@@ -13,7 +13,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 mapboxgl.accessToken = 'pk.eyJ1IjoiaW50aWJnMSIsImEiOiJjbXJtYnp1MXEwMG90MndxeWNvczFjNWl3In0.Cu8z8cIJPYkvqDMRPyCTKQ';
 
 const INITIAL_CENTER: [number, number] = [27.74370, 42.65982]; // [lng, lat] — Sofia, Bulgaria
-const INITIAL_ZOOM = 14;
+const INITIAL_ZOOM = 20;
 const INITIAL_PITCH = 60;
 const INITIAL_BEARING = -20;
 

@@ -69,7 +69,8 @@ function Mapbox3DTerrain() {
       // 5. 3D building extrusions
       const layers = map.getStyle().layers;
       const labelLayerId = layers?.find(
-        (l) => l.type === 'symbol' && l.layout && (l.layout as any)['text-field']
+        (l): l is mapboxgl.SymbolLayerSpecification =>
+          l.type === 'symbol' && !!l.layout && 'text-field' in l.layout
       )?.id;
 
       map.addLayer(
@@ -95,7 +96,6 @@ function Mapbox3DTerrain() {
       map.remove();
       mapRef.current = null;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Update terrain exaggeration when slider changes

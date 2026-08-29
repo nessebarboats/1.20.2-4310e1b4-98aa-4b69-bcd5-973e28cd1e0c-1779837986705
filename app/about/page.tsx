@@ -10,7 +10,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // npm install -D @types/mapbox-gl
 
 // 1. Set your Mapbox access token here (better: use an env var, e.g. process.env.NEXT_PUBLIC_MAPBOX_TOKEN)
-mapboxgl.accessToken = 'pk.eyJ1IjoiaW50aWJnMSIsImEiOiJjbXJtYnp1MXEwMG90MndxeWNvczFjNWl3In0.Cu8z8cIJPYkvqDMRPyCTKQ';
+mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
 
 const INITIAL_CENTER: [number, number] = [23.3219, 42.6977]; // [lng, lat] — Sofia, Bulgaria
 const INITIAL_ZOOM = 14;
@@ -88,7 +88,7 @@ function Mapbox3DTerrain() {
     });
 
     map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), 'top-right');
-console.warn('🗺️ MAP LOAD FIRED — about to add markers');
+
     map.on('load', () => {
       console.warn('🗺️ MAP LOAD FIRED — about to add markers');
 
@@ -98,6 +98,12 @@ console.warn('🗺️ MAP LOAD FIRED — about to add markers');
         const bounds = new mapboxgl.LngLatBounds();
 
         LOCATIONS.forEach((loc) => {
+          // Wrapper holds the pin, temp badge, and wind arrow together so they move as one unit
+          const wrapper = document.createElement('div');
+          wrapper.style.position = 'relative';
+          wrapper.style.width = '22px';
+          wrapper.style.height = '22px';
+
           const el = document.createElement('div');
           el.style.width = '22px';
           el.style.height = '22px';
@@ -106,6 +112,7 @@ console.warn('🗺️ MAP LOAD FIRED — about to add markers');
           el.style.border = '3px solid #ffffff';
           el.style.boxShadow = '0 2px 6px rgba(0,0,0,0.4)';
           el.style.cursor = 'pointer';
+          wrapper.appendChild(el);
 
           // Small temperature badge, updated once weather data arrives
           const tempBadge = document.createElement('div');
@@ -126,13 +133,35 @@ console.warn('🗺️ MAP LOAD FIRED — about to add markers');
           tempBadge.style.justifyContent = 'center';
           tempBadge.style.fontFamily = 'system-ui, sans-serif';
           tempBadge.textContent = '…';
-          el.appendChild(tempBadge);
+          wrapper.appendChild(tempBadge);
+
+          // Wind direction arrow — orbits just outside the pin, rotated to match wind direction
+          const windArrow = document.createElement('div');
+          windArrow.style.position = 'absolute';
+          windArrow.style.top = '50%';
+          windArrow.style.left = '50%';
+          windArrow.style.width = '36px';
+          windArrow.style.height = '36px';
+          windArrow.style.marginLeft = '-18px';
+          windArrow.style.marginTop = '-18px';
+          windArrow.style.display = 'flex';
+          windArrow.style.alignItems = 'flex-start';
+          windArrow.style.justifyContent = 'center';
+          windArrow.style.pointerEvents = 'none';
+          windArrow.style.transform = 'rotate(0deg)';
+          windArrow.style.transition = 'transform 0.4s ease';
+          windArrow.innerHTML = `
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L18 12H14V22H10V12H6L12 2Z" fill="#0ea5e9" stroke="#ffffff" stroke-width="1"/>
+            </svg>`;
+          windArrow.style.opacity = '0'; // hidden until wind data arrives
+          wrapper.appendChild(windArrow);
 
           const popup = new mapboxgl.Popup({ offset: 18 }).setHTML(
             `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}<br/><em>Loading weather…</em>`
           );
 
-          new mapboxgl.Marker({ element: el, anchor: 'center' })
+          new mapboxgl.Marker({ element: wrapper, anchor: 'center' })
             .setLngLat(loc.coords)
             .setPopup(popup)
             .addTo(map);
@@ -145,6 +174,11 @@ console.warn('🗺️ MAP LOAD FIRED — about to add markers');
             if (weather) {
               tempBadge.textContent = `${Math.round(weather.tempC)}°`;
               tempBadge.style.background = tempColor(weather.tempC);
+
+              // Rotate arrow to point in the direction the wind is blowing TOWARD
+              // (meteorological "direction" is where wind comes FROM, so add 180°)
+              windArrow.style.transform = `rotate(${weather.directionDeg + 180}deg)`;
+              windArrow.style.opacity = '1';
 
               popup.setHTML(
                 `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}

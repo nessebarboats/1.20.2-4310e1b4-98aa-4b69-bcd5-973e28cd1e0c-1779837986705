@@ -84,7 +84,7 @@ function Mapbox3DTerrain() {
     mapRef.current = map;
 
     map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), 'top-right');
-
+console.log('🗺️ MAP LOAD FIRED — about to add markers');
     map.on('load', () => {
       console.warn('🗺️ MAP LOAD FIRED — about to add markers');
 console.log('🗺️ MAP LOAD FIRED — about to add markers');

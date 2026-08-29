@@ -10,7 +10,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // npm install -D @types/mapbox-gl
 
 // 1. Set your Mapbox access token here (better: use an env var, e.g. process.env.NEXT_PUBLIC_MAPBOX_TOKEN)
-mapboxgl.accessToken = 'pk.eyJ1IjoiaW50aWJnMSIsImEiOiJjbXJtYnp1MXEwMG90MndxeWNvczFjNWl3In0.Cu8z8cIJPYkvqDMRPyCTKQ';
+mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
 
 const INITIAL_CENTER: [number, number] = [23.3219, 42.6977]; // [lng, lat] — Sofia, Bulgaria
 const INITIAL_ZOOM = 14;
@@ -86,6 +86,8 @@ function Mapbox3DTerrain() {
     map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), 'top-right');
 
     map.on('load', () => {
+      console.warn('🗺️ MAP LOAD FIRED — about to add markers');
+
       // 1. Add pin markers + wind data FIRST, wrapped in try/catch, so this always
       // runs even if the terrain/building code below has an issue.
       try {

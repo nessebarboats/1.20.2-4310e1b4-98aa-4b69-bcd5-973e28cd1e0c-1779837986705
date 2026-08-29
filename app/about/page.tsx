@@ -10,7 +10,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // npm install -D @types/mapbox-gl
 
 // 1. Set your Mapbox access token here (better: use an env var, e.g. process.env.NEXT_PUBLIC_MAPBOX_TOKEN)
-mapboxgl.accessToken = 'pk.eyJ1IjoiaW50aWJnMSIsImEiOiJjbXJtYnp1MXEwMG90MndxeWNvczFjNWl3In0.Cu8z8cIJPYkvqDMRPyCTKQ';
+mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
 
 const INITIAL_CENTER: [number, number] = [23.3219, 42.6977]; // [lng, lat] — Sofia, Bulgaria
 const INITIAL_ZOOM = 14;
@@ -102,7 +102,19 @@ function Mapbox3DTerrain() {
       const bounds = new mapboxgl.LngLatBounds();
 
       LOCATIONS.forEach((loc) => {
-        new mapboxgl.Marker({ color: '#e63946' })
+        // Custom marker element (instead of the default SVG icon) so it can't be
+        // silently hidden by a global CSS reset targeting <svg> elements.
+        const el = document.createElement('div');
+        el.style.width = '22px';
+        el.style.height = '22px';
+        el.style.borderRadius = '50% 50% 50% 0';
+        el.style.background = '#e63946';
+        el.style.border = '3px solid #ffffff';
+        el.style.boxShadow = '0 2px 6px rgba(0,0,0,0.4)';
+        el.style.transform = 'rotate(-45deg)';
+        el.style.cursor = 'pointer';
+
+        new mapboxgl.Marker({ element: el, anchor: 'bottom' })
           .setLngLat(loc.coords)
           .setPopup(
             new mapboxgl.Popup({ offset: 25 }).setHTML(

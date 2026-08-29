@@ -1,7 +1,6 @@
 "use client";
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
- 
 
 import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
@@ -10,7 +9,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // npm install mapbox-gl
 // npm install -D @types/mapbox-gl
 
-// 1. Set your Mapbox access token here (better: use an env var, e.g. import.meta.env.VITE_MAPBOX_TOKEN)
+// 1. Set your Mapbox access token here (better: use an env var, e.g. process.env.NEXT_PUBLIC_MAPBOX_TOKEN)
 mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
 
 const INITIAL_CENTER: [number, number] = [23.3219, 42.6977]; // [lng, lat] — Sofia, Bulgaria
@@ -18,7 +17,8 @@ const INITIAL_ZOOM = 14;
 const INITIAL_PITCH = 60;
 const INITIAL_BEARING = -20;
 
-export default function Mapbox3DTerrain() {
+// NOTE: no "export default" here — this is a local component used only within this file.
+function Mapbox3DTerrain() {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<mapboxgl.Map | null>(null);
 
@@ -113,7 +113,7 @@ export default function Mapbox3DTerrain() {
   }, [pitch]);
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
+    <div style={{ position: 'relative', width: '100%', height: '500px' }}>
       <div
         style={{
           position: 'absolute',
@@ -167,9 +167,7 @@ export default function Mapbox3DTerrain() {
   );
 }
 
-
-
-
+// This is the ONLY default export in the file — required for a Next.js page.
 export default function About() {
   return (
     <div className="flex flex-col w-full min-h-screen items-center justify-between fancy-overlay">
@@ -180,10 +178,14 @@ export default function About() {
           <h1 className="text-4xl font-semibold leading-tight md:leading-tight max-w-xs sm:max-w-none md:text-6xl fancy-heading">
             About nessebarboats
           </h1>
-    
+
           <p className="mt-6 md:text-xl">nessebarboats</p>
 
           <p className="mt-6 md:text-xl"></p>
+        </section>
+
+        <section className="w-full p-6 container-narrow">
+          <Mapbox3DTerrain />
         </section>
       </div>
 

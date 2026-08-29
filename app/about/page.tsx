@@ -83,11 +83,15 @@ function Mapbox3DTerrain() {
 
     mapRef.current = map;
 
+    map.on('error', (e) => {
+      console.error('🚨 MAPBOX ERROR:', e.error?.message || e);
+    });
+
     map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), 'top-right');
-console.log('🗺️ MAP LOAD FIRED — about to add markers');
+console.warn('🗺️ MAP LOAD FIRED — about to add markers');
     map.on('load', () => {
       console.warn('🗺️ MAP LOAD FIRED — about to add markers');
-console.log('🗺️ MAP LOAD FIRED — about to add markers');
+
       // 1. Add pin markers + wind data FIRST, wrapped in try/catch, so this always
       // runs even if the terrain/building code below has an issue.
       try {

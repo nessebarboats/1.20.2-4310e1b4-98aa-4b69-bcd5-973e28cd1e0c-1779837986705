@@ -47,7 +47,20 @@ async function fetchWeather(lng: number, lat: number): Promise<WeatherData | nul
   }
 }
 
-// Returns a color for a temperature badge — blue (cold) through red (hot).
+// Fetches current significant wave height (meters) for a coordinate, using
+// Open-Meteo's free Marine API (no key needed). Returns null over land or on failure.
+async function fetchWaveHeight(lng: number, lat: number): Promise<number | null> {
+  try {
+    const url = `https://marine-api.open-meteo.com/v1/marine?latitude=${lat}&longitude=${lng}&current=wave_height`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const data = await res.json();
+    const height = data?.current?.wave_height;
+    return typeof height === 'number' ? height : null;
+  } catch {
+    return null;
+  }
+}
 function tempColor(tempC: number): string {
   if (tempC <= 0) return '#3b82f6';
   if (tempC <= 10) return '#60a5fa';
@@ -73,6 +86,20 @@ function Mapbox3DTerrain() {
   // Initialize map once
   useEffect(() => {
     if (!mapContainerRef.current || mapRef.current) return;
+
+    // Inject the wave-bob keyframe animation once (used by each pin's wave icon)
+    if (!document.getElementById('wave-bob-keyframes')) {
+      const styleTag = document.createElement('style');
+      styleTag.id = 'wave-bob-keyframes';
+      styleTag.textContent = `
+        @keyframes wave-bob {
+          0%   { transform: translateY(0px); }
+          50%  { transform: translateY(var(--wave-amplitude, -4px)); }
+          100% { transform: translateY(0px); }
+        }
+      `;
+      document.head.appendChild(styleTag);
+    }
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
@@ -160,6 +187,26 @@ function Mapbox3DTerrain() {
           windArrow.style.opacity = '0'; // hidden until wind data arrives
           wrapper.appendChild(windArrow);
 
+          // Wave height icon — small bobbing wave lines below the pin, amplitude scales with actual wave height
+          const waveIcon = document.createElement('div');
+          waveIcon.style.position = 'absolute';
+          waveIcon.style.top = '26px';
+          waveIcon.style.left = '50%';
+          waveIcon.style.transform = 'translateX(-50%)';
+          waveIcon.style.display = 'flex';
+          waveIcon.style.flexDirection = 'column';
+          waveIcon.style.alignItems = 'center';
+          waveIcon.style.pointerEvents = 'none';
+          waveIcon.style.opacity = '0'; // hidden until wave data arrives
+          waveIcon.innerHTML = `
+            <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 6 Q 3 2, 6 6 T 12 6 T 18 6" stroke="#0284c7" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span style="font-size:9px; font-weight:700; color:#0284c7; background:rgba(255,255,255,0.9); border-radius:6px; padding:0 3px; margin-top:1px; font-family: system-ui, sans-serif;">…</span>
+          `;
+          wrapper.appendChild(waveIcon);
+          const waveLabel = waveIcon.querySelector('span') as HTMLSpanElement;
+
           const popup = new mapboxgl.Popup({ offset: 18 }).setHTML(
             `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}<br/><em>Loading weather…</em>`
           );
@@ -173,7 +220,30 @@ function Mapbox3DTerrain() {
 
           bounds.extend(loc.coords);
 
+          // Track both async results so the popup can show them together once both arrive
+          let latestWeather: WeatherData | null = null;
+          let latestWaveM: number | null | undefined = undefined; // undefined = not yet resolved
+
+          const renderPopup = () => {
+            const weatherHtml = latestWeather
+              ? `<div style="margin-top:4px;">🌡️ ${latestWeather.tempC.toFixed(1)}°C</div>
+                 <div style="margin-top:2px;">💨 ${latestWeather.speedKn.toFixed(1)} kn from ${degToCompass(latestWeather.directionDeg)}</div>`
+              : `<div style="margin-top:4px; color:#888;">Weather data unavailable</div>`;
+
+            const waveHtml =
+              latestWaveM === undefined
+                ? ''
+                : latestWaveM !== null
+                ? `<div style="margin-top:2px;">🌊 ${latestWaveM.toFixed(1)} m wave height</div>`
+                : `<div style="margin-top:2px; color:#888;">Wave data unavailable</div>`;
+
+            popup.setHTML(
+              `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}${weatherHtml}${waveHtml}`
+            );
+          };
+
           fetchWeather(loc.coords[0], loc.coords[1]).then((weather) => {
+            latestWeather = weather;
             if (weather) {
               tempBadge.textContent = `${Math.round(weather.tempC)}°`;
               tempBadge.style.background = tempColor(weather.tempC);
@@ -182,18 +252,28 @@ function Mapbox3DTerrain() {
               // (meteorological "direction" is where wind comes FROM, so add 180°)
               windArrow.style.transform = `rotate(${weather.directionDeg + 180}deg)`;
               windArrow.style.opacity = '1';
-
-              popup.setHTML(
-                `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}
-                 <div style="margin-top:4px;">🌡️ ${weather.tempC.toFixed(1)}°C</div>
-                 <div style="margin-top:2px;">💨 ${weather.speedKn.toFixed(1)} kn from ${degToCompass(weather.directionDeg)}</div>`
-              );
             } else {
               tempBadge.textContent = '?';
-              popup.setHTML(
-                `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}<br/><span style="color:#888;">Weather data unavailable</span>`
-              );
             }
+            renderPopup();
+          });
+
+          fetchWaveHeight(loc.coords[0], loc.coords[1]).then((waveM) => {
+            latestWaveM = waveM;
+            if (waveM !== null) {
+              waveLabel.textContent = `${waveM.toFixed(1)}m`;
+              waveIcon.style.opacity = '1';
+
+              // Scale the bobbing amplitude with wave height: bigger waves bob more.
+              // Clamp so tiny/huge values still look reasonable (2px–14px).
+              const amplitude = Math.min(14, Math.max(2, waveM * 6));
+              waveIcon.style.setProperty('--wave-amplitude', `-${amplitude}px`);
+
+              // Speed up the bob slightly for bigger waves too
+              const duration = Math.max(1, 2.2 - waveM * 0.3);
+              waveIcon.style.animation = `wave-bob ${duration}s ease-in-out infinite`;
+            }
+            renderPopup();
           });
         });
 

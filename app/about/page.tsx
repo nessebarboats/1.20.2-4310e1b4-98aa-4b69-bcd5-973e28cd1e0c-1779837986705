@@ -10,7 +10,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // npm install -D @types/mapbox-gl
 
 // 1. Set your Mapbox access token here (better: use an env var, e.g. process.env.NEXT_PUBLIC_MAPBOX_TOKEN)
-mapboxgl.accessToken = 'pk.eyJ1IjoiaW50aWJnMSIsImEiOiJjbXJtYnp1MXEwMG90MndxeWNvczFjNWl3In0.Cu8z8cIJPYkvqDMRPyCTKQ';
+mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
 
 const INITIAL_CENTER: [number, number] = [23.3219, 42.6977]; // [lng, lat] — Sofia, Bulgaria
 const INITIAL_ZOOM = 14;
@@ -41,7 +41,7 @@ function Mapbox3DTerrain() {
       style: 'mapbox://styles/mapbox/satellite-streets-v12',
       center: INITIAL_CENTER,
       zoom: INITIAL_ZOOM,
-      pitch: INITIAL_PITCH,
+      pitch: 0, // start flat; we'll fly to the pitched view after fitting bounds
       bearing: INITIAL_BEARING,
       antialias: true,
     });
@@ -98,7 +98,9 @@ function Mapbox3DTerrain() {
         labelLayerId
       );
 
-      // 6. Add pin markers for every location
+      // 6. Add pin markers for every location, and track them so we can fit bounds
+      const bounds = new mapboxgl.LngLatBounds();
+
       LOCATIONS.forEach((loc) => {
         new mapboxgl.Marker({ color: '#e63946' })
           .setLngLat(loc.coords)
@@ -108,7 +110,18 @@ function Mapbox3DTerrain() {
             )
           )
           .addTo(map);
+
+        bounds.extend(loc.coords);
       });
+
+      // 7. Fit the camera so every pin is visible, then ease into the pitched 3D view
+      if (!bounds.isEmpty()) {
+        map.fitBounds(bounds, { padding: 80, duration: 0 });
+        map.once('idle', () => {
+          map.easeTo({ pitch: INITIAL_PITCH, duration: 800 });
+          setPitch(INITIAL_PITCH);
+        });
+      }
     });
 
     return () => {

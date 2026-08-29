@@ -10,22 +10,44 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 // npm install -D @types/mapbox-gl
 
 // 1. Set your Mapbox access token here (better: use an env var, e.g. process.env.NEXT_PUBLIC_MAPBOX_TOKEN)
-mapboxgl.accessToken = 'pk.eyJ1IjoiaW50aWJnMSIsImEiOiJjbXJtYnp1MXEwMG90MndxeWNvczFjNWl3In0.Cu8z8cIJPYkvqDMRPyCTKQ';
+mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
 
-const INITIAL_CENTER: [number, number] = [27.743707, 42.659820]; // [lng, lat] — Sofia, Bulgaria
+const INITIAL_CENTER: [number, number] = [23.3219, 42.6977]; // [lng, lat] — Sofia, Bulgaria
 const INITIAL_ZOOM = 14;
 const INITIAL_PITCH = 60;
 const INITIAL_BEARING = -20;
 
 // Add/remove pins here — each needs coordinates, a title, and optional description
 const LOCATIONS: { coords: [number, number]; title: string; description?: string }[] = [
-  { coords: [27.743707, 42.659820], title: 'nessebarboats HQ', description: 'Main office' },
-  { coords: [27.692293, 42.649218], title: 'Marina dock A', description: 'Boat pickup point' },
-  { coords: [27.912160, 42.697375], title: 'Marina dock B', description: 'Boat pickup point' },
-  { coords: [27.811908, 42.701778], title: 'Marina dock B', description: 'Boat pickup point' },
-  { coords: [27.747968, 42.707671], title: 'Marina dock B', description: 'Boat pickup point' },
-  { coords: [27.716937, 42.693605], title: 'Marina dock B', description: 'Boat pickup point' },
+  { coords: [23.3219, 42.6977], title: 'nessebarboats HQ', description: 'Main office' },
+  { coords: [23.3300, 42.7050], title: 'Marina dock A', description: 'Boat pickup point' },
+  { coords: [23.3150, 42.6900], title: 'Marina dock B', description: 'Boat pickup point' },
 ];
+
+type WindData = { speedKn: number; directionDeg: number };
+
+// Fetches current wind speed (knots) + direction (degrees) for a coordinate.
+// Open-Meteo is free and requires no API key.
+async function fetchWind(lng: number, lat: number): Promise<WindData | null> {
+  try {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=wind_speed_10m,wind_direction_10m&wind_speed_unit=kn`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const data = await res.json();
+    return {
+      speedKn: data.current.wind_speed_10m,
+      directionDeg: data.current.wind_direction_10m,
+    };
+  } catch {
+    return null;
+  }
+}
+
+// Converts a compass degree reading into an 8-point direction label (e.g. "NE").
+function degToCompass(deg: number): string {
+  const dirs = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+  return dirs[Math.round(deg / 45) % 8];
+}
 
 // NOTE: no "export default" here — this is a local component used only within this file.
 function Mapbox3DTerrain() {
@@ -117,16 +139,30 @@ function Mapbox3DTerrain() {
         el.style.transform = 'rotate(-45deg)';
         el.style.cursor = 'pointer';
 
+        const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+          `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}<br/><em>Loading wind…</em>`
+        );
+
         new mapboxgl.Marker({ element: el, anchor: 'bottom' })
           .setLngLat(loc.coords)
-          .setPopup(
-            new mapboxgl.Popup({ offset: 25 }).setHTML(
-              `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}`
-            )
-          )
+          .setPopup(popup)
           .addTo(map);
 
         bounds.extend(loc.coords);
+
+        // 6a. Fetch live wind data for this point and update its popup once it arrives
+        fetchWind(loc.coords[0], loc.coords[1]).then((wind) => {
+          const windHtml = wind
+            ? `<div style="margin-top:4px;">
+                 💨 ${wind.speedKn.toFixed(1)} kn from ${degToCompass(wind.directionDeg)}
+                 <span style="display:inline-block; transform: rotate(${wind.directionDeg}deg); margin-left:4px;">↓</span>
+               </div>`
+            : `<div style="margin-top:4px; color:#888;">Wind data unavailable</div>`;
+
+          popup.setHTML(
+            `<strong>${loc.title}</strong>${loc.description ? `<br/>${loc.description}` : ''}${windHtml}`
+          );
+        });
       });
 
       // 7. Fit the camera so every pin is visible, then ease into the pitched 3D view

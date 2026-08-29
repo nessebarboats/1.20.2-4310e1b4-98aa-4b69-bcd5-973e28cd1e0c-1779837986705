@@ -1,7 +1,7 @@
 "use client";
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
-
+ 
 
 import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
